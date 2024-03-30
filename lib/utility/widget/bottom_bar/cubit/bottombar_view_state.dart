@@ -6,7 +6,7 @@ class BottombarViewState extends Equatable {
   const BottombarViewState({required this.currentBottomStateIndex});
 
   ///Bottom bar selected index
-  final int? currentBottomStateIndex;
+  final int currentBottomStateIndex;
 
   @override
   List<Object?> get props => [currentBottomStateIndex];
@@ -15,7 +15,8 @@ class BottombarViewState extends Equatable {
     int? currentBottomStateIndex,
   }) {
     return BottombarViewState(
-      currentBottomStateIndex: currentBottomStateIndex ?? this.currentBottomStateIndex,
+      currentBottomStateIndex:
+          currentBottomStateIndex ?? this.currentBottomStateIndex,
     );
   }
 }

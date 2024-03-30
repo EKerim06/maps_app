@@ -16,21 +16,33 @@ class CustomBottomBar extends StatefulWidget {
 
   @override
   _CustomBottomBarState createState() => _CustomBottomBarState();
-  
 }
 
 class _CustomBottomBarState extends State<CustomBottomBar> {
-
   late final BottombarViewModel bottomViewModel;
+  late final PageController pageController;
 
   @override
   void initState() {
     super.initState();
     bottomViewModel = BottombarViewModel();
+    pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    const topLevelPages = [
+      HomePageView(),
+      SavePage(),
+      SettingsPage(),
+    ];
+
     return BlocProvider(
       create: (context) => bottomViewModel,
       child: BlocConsumer<BottombarViewModel, BottombarViewState>(
@@ -38,19 +50,17 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
         builder: (context, state) {
           return Scaffold(
             appBar: AppBar(),
-            
             bottomNavigationBar: BottomNavigationBar(
-              elevation: 4,
-              onTap: bottomViewModel.setCurrentIndex,
+              elevation: 12,
+              onTap: (value) {
+                bottomViewModel.setCurrentIndex(value);
+                pageController.jumpToPage(value);
+              },
               enableFeedback: true,
               showSelectedLabels: true,
               showUnselectedLabels: false,
-              currentIndex: bottomViewModel.state.currentBottomStateIndex ?? 0,
+              currentIndex: bottomViewModel.state.currentBottomStateIndex,
               items: const [
-                BottomNavigationBarItem(
-                  label: 'Ayarlar',
-                  icon: Icon(Icons.settings),
-                ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.explore),
                   label: 'Harita',
@@ -59,16 +69,23 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
                   icon: Icon(Icons.flag),
                   label: 'Kaydedilenler',
                 ),
+                BottomNavigationBarItem(
+                  label: 'Ayarlar',
+                  icon: Icon(Icons.settings),
+                ),
               ],
             ),
             body: BlocConsumer<BottombarViewModel, BottombarViewState>(
               listener: (context, state) {},
               builder: (context, state) {
-                return <Widget>[
-                  const HomePageView(),
-                  const SettingsPage(),
-                  const SavePage(),
-                ][state.currentBottomStateIndex ?? 0];
+                return PageView(
+                  onPageChanged: (value) {
+                    bottomViewModel.setCurrentIndex(value);
+                    pageController.jumpToPage(value);
+                  },
+                  controller: pageController,
+                  children: topLevelPages,
+                );
               },
             ),
           );

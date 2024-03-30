@@ -1,6 +1,5 @@
 // ignore: lines_longer_than_80_chars
 import 'package:flutter/material.dart';
-import 'package:flutter_maps_note/utility/widget/bottom_bar/custom_bottombar.dart';
 
 ///Home Page View
 ///show Maps
@@ -16,11 +15,8 @@ class HomePageView extends StatefulWidget {
 class MapSampleState extends State<HomePageView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: CustomBottomBar(),
-      body: const Center(
-        child: Text('homePage'),
-      ),
+    return const Center(
+      child: Text('homePage'),
     );
   }
 }

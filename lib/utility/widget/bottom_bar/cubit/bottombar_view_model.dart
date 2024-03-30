@@ -7,9 +7,7 @@ part 'bottombar_view_state.dart';
 class BottombarViewModel extends Cubit<BottombarViewState> {
   ///BottomBar view Model super call cunstructor
   BottombarViewModel()
-      : super(
-          const BottombarViewState(currentBottomStateIndex: 0),
-        );
+      : super(const BottombarViewState(currentBottomStateIndex: 0));
 
   ///Bottom bar state managment cuntructor
 
