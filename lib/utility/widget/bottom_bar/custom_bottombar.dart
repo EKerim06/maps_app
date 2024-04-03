@@ -79,6 +79,9 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
               listener: (context, state) {},
               builder: (context, state) {
                 return PageView(
+                  physics: bottomViewModel.state.currentBottomStateIndex == 0
+                      ? const NeverScrollableScrollPhysics()
+                      : null,
                   onPageChanged: (value) {
                     bottomViewModel.setCurrentIndex(value);
                     pageController.jumpToPage(value);

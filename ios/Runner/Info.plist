@@ -28,6 +28,14 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your message here</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Your message here</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Your message here</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Your message here</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
