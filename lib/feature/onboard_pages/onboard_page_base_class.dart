@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_maps_note/constants/string_constants.dart';
 import 'package:flutter_maps_note/utility/widget/buttons/custom_general_button.dart';
 import 'package:kartal/kartal.dart';
 

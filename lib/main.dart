@@ -1,8 +1,10 @@
 // ignore_for_file: public_member_api_docs
 import 'package:flutter/material.dart';
-import 'package:flutter_maps_note/page/splash_screen/onboard_pages/welcome_to_app_page.dart';
+import 'package:flutter_maps_note/feature/splash_screen/splash_page_view.dart';
+import 'package:flutter_maps_note/get_it.dart';
 
 void main() {
+  setup();
   runApp(const MyApp());
 }
 
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const WelcomeToAppPage(),
+      home: const SplashPageView(),
     );
   }
 }

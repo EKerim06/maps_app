@@ -3,9 +3,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_maps_note/page/home/home_page_view.dart';
-import 'package:flutter_maps_note/page/save/save_page.dart';
-import 'package:flutter_maps_note/page/settings/settings_page.dart';
+import 'package:flutter_maps_note/feature/home/home_page_view.dart';
+import 'package:flutter_maps_note/feature/save/save_page.dart';
+import 'package:flutter_maps_note/feature/settings/settings_page.dart';
 
 import 'package:flutter_maps_note/utility/widget/bottom_bar/cubit/bottombar_view_model.dart';
 
