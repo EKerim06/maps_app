@@ -49,7 +49,6 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
         listener: (context, state) {},
         builder: (context, state) {
           return Scaffold(
-            appBar: AppBar(),
             bottomNavigationBar: BottomNavigationBar(
               elevation: 12,
               onTap: (value) {

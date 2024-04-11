@@ -1,6 +1,6 @@
-/// general text for app
 // ignore_for_file: lines_longer_than_80_chars
 
+///App general use to Strings.
 class StringConstants {
   ///Welcome to app messagew
   static String welcomeToAppMessage = 'Uygulamaya Hoş Geldiniz';
@@ -14,4 +14,10 @@ class StringConstants {
 
   /// onboard page location explain
   static String onboardButtonExplainLocationOkey = 'Onayla';
+
+  /// User want to not give permission
+  static String onboardButtonLocationPermissionDenider = 'Reddet';
+
+  ///Splash screen app name
+  static String splashScreenMessage = 'Hatırlatıcı Haritalar';
 }

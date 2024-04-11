@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_maps_note/constants/string_constants.dart';
+import 'package:flutter_maps_note/feature/onboard_pages/base_class/onboard_page_base_class.dart';
 import 'package:flutter_maps_note/feature/onboard_pages/location/location_explain_page.dart';
-import 'package:flutter_maps_note/feature/onboard_pages/onboard_page_base_class.dart';
 import 'package:flutter_maps_note/utility/widget/buttons/normal_buttom/normal_buttons.dart';
 import 'package:gen/gen/assets.gen.dart';
 import 'package:kartal/kartal.dart';

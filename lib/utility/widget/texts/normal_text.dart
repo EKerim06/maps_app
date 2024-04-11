@@ -15,7 +15,10 @@ class NormalText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextBaseClass(
-      textStyle: TextStyle(color: Colors.black,),
+      textStyle: const TextStyle(
+        color: Colors.black,
+        fontSize: 24,
+      ),
       message: message,
     );
   }

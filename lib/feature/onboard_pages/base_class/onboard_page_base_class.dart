@@ -24,7 +24,7 @@ class OnBoardPageBaseClass extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
       ),
       body: Center(
         child: Column(

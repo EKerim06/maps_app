@@ -15,8 +15,10 @@ class HomePageView extends StatefulWidget {
 ///Home Page State
 class MapSampleState extends State<HomePageView> {
   ///example
-  final CameraPosition cmp = CameraPosition(
-      target: LatLng(37.566463930332816, 36.937840311064676), zoom: 12);
+  final CameraPosition cmp = const CameraPosition(
+    target: LatLng(37.566463930332816, 36.937840311064676),
+    zoom: 12,
+  );
 
   @override
   Widget build(BuildContext context) {

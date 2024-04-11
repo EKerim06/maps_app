@@ -3,13 +3,18 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_maps_note/constants/string_constants.dart';
+import 'package:flutter_maps_note/core/cache/shared_preferences/shared_preferences_manager.dart';
+import 'package:flutter_maps_note/core/cache/shared_preferences/shared_preferences_service.dart';
 import 'package:flutter_maps_note/feature/onboard_pages/location/cubit/location_cubit.dart';
-import 'package:flutter_maps_note/feature/onboard_pages/onboard_page_base_class.dart';
+import 'package:flutter_maps_note/feature/onboard_pages/base_class/onboard_page_base_class.dart';
+import 'package:flutter_maps_note/get_it.dart';
+import 'package:flutter_maps_note/utility/widget/bottom_bar/custom_bottombar.dart';
 import 'package:flutter_maps_note/utility/widget/buttons/normal_buttom/normal_buttons.dart';
 import 'package:flutter_maps_note/utility/widget/toast_message.dart';
 import 'package:gen/gen/assets.gen.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:kartal/kartal.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 ///Location Explain Page
 class LocationExplainPage extends StatefulWidget {
@@ -24,11 +29,18 @@ class LocationExplainPage extends StatefulWidget {
 
 class _LocationExplainPageState extends State<LocationExplainPage> {
   late final LocationCubit viewModel;
+
+  late final SharedPreferences sharedPreferences;
+
+  late final SharedPreferencesManager manager;
+
   @override
   void initState() {
     super.initState();
 
     viewModel = LocationCubit();
+    sharedPreferences = getIt.get<SharedPreferences>();
+    manager = SharedPreferencesService(manager: sharedPreferences);
   }
 
   void getLcation() {
@@ -46,8 +58,10 @@ class _LocationExplainPageState extends State<LocationExplainPage> {
           if (request == LocationPermission.denied) {
             print('permission denied');
             Geolocator.requestPermission();
+            manager.setOnboardingPageShowState(isValue: false);
           } else {
             print('permission granted');
+            manager.setOnboardingPageShowState(isValue: true);
             viewModel.permissionOK();
           }
         }
@@ -66,15 +80,19 @@ class _LocationExplainPageState extends State<LocationExplainPage> {
             elevatedButton: NormalButtons(
               onPressed: () {
                 getLcation();
-                (state.isRequiredPermission ?? false)
-                    ? CustomToastMessage.createToastMessage(
-                        context: context,
-                        message: 'permission granter',
-                      )
-                    : CustomToastMessage.createToastMessage(
-                        context: context,
-                        message: 'Permission Denied',
-                      );
+                if (state.isRequiredPermission ?? false) {
+                  CustomToastMessage.createToastMessage(
+                    context: context,
+                    message: 'permission granter',
+                  );
+                  context.route.navigateToPage(const CustomBottomBar());
+                } else {
+                  CustomToastMessage.createToastMessage(
+                    context: context,
+                    message: 'Permission Denied',
+                  );
+                }
+
                 print('${viewModel.state.position}');
               },
 
