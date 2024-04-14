@@ -24,7 +24,7 @@ class WelcomeToAppPage extends StatelessWidget {
       ),
       elevatedButton: NormalButtons(
         onPressed: () =>
-            context.route.navigateToPage(const LocationExplainPage()),
+            context.route.navigateToPageAndRemove(const LocationExplainPage()),
         width: context.sized.width,
         margin: context.padding.horizontalLow,
         child: Text(StringConstants.onbardButtonWelcomeToAppButton),

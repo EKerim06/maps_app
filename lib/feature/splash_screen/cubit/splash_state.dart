@@ -5,6 +5,7 @@ part of 'splash_cubit.dart';
 class SplashState extends Equatable {
   ///Splash State Constructor
   const SplashState({
+    this.location,
     this.isContinue,
     this.isAnimFinished = false,
   });
@@ -14,17 +15,22 @@ class SplashState extends Equatable {
 
   final bool isAnimFinished;
 
+  final Position? location;
+
   @override
   List<Object?> get props => [
         isContinue,
         isAnimFinished,
+        location,
       ];
 
   SplashState copyWith({
     bool? isContinue,
     bool? isAnimFinished,
+    Position? location,
   }) {
     return SplashState(
+      location: location ?? this.location,
       isContinue: isContinue ?? this.isContinue,
       isAnimFinished: isAnimFinished ?? this.isAnimFinished,
     );

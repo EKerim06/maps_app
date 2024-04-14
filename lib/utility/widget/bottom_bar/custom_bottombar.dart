@@ -1,18 +1,22 @@
-// ignore_for_file:  sort_constructors_first
-// ignore_for_file: public_member_api_docs, library_private_types_in_public_api
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_maps_note/feature/home/home_page_view.dart';
-import 'package:flutter_maps_note/feature/save/save_page.dart';
-import 'package:flutter_maps_note/feature/settings/settings_page.dart';
+import 'package:flutter_maps_note/feature/save_page/save_page.dart';
+import 'package:flutter_maps_note/feature/settings_page/settings_page.dart';
 
 import 'package:flutter_maps_note/utility/widget/bottom_bar/cubit/bottombar_view_model.dart';
+import 'package:geolocator/geolocator.dart';
 
+///Custom bottom appbar
 class CustomBottomBar extends StatefulWidget {
+  ///Custom bottom appbar constructor
   const CustomBottomBar({
+    required this.location,
     super.key,
   });
+
+  /// splash screen gettin location value
+  final Position location;
 
   @override
   _CustomBottomBarState createState() => _CustomBottomBarState();
@@ -37,10 +41,12 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
 
   @override
   Widget build(BuildContext context) {
-    const topLevelPages = [
-      HomePageView(),
-      SavePage(),
-      SettingsPage(),
+    final topLevelPages = [
+      HomePageView(
+        location: widget.location,
+      ),
+      const SavePage(),
+      const SettingsPage(),
     ];
 
     return BlocProvider(

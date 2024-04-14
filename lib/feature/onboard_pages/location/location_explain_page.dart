@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_maps_note/constants/string_constants.dart';
 import 'package:flutter_maps_note/core/cache/shared_preferences/shared_preferences_manager.dart';
 import 'package:flutter_maps_note/core/cache/shared_preferences/shared_preferences_service.dart';
-import 'package:flutter_maps_note/feature/onboard_pages/location/cubit/location_cubit.dart';
 import 'package:flutter_maps_note/feature/onboard_pages/base_class/onboard_page_base_class.dart';
+import 'package:flutter_maps_note/feature/onboard_pages/location/cubit/location_cubit.dart';
 import 'package:flutter_maps_note/get_it.dart';
 import 'package:flutter_maps_note/utility/widget/bottom_bar/custom_bottombar.dart';
 import 'package:flutter_maps_note/utility/widget/buttons/normal_buttom/normal_buttons.dart';
@@ -74,7 +74,9 @@ class _LocationExplainPageState extends State<LocationExplainPage> {
     return BlocProvider(
       create: (context) => viewModel,
       child: BlocConsumer<LocationCubit, LocationState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          state.position;
+        },
         builder: (context, state) {
           return OnBoardPageBaseClass(
             elevatedButton: NormalButtons(
@@ -83,9 +85,15 @@ class _LocationExplainPageState extends State<LocationExplainPage> {
                 if (state.isRequiredPermission ?? false) {
                   CustomToastMessage.createToastMessage(
                     context: context,
-                    message: 'permission granter',
+                    message: 'permission granted',
                   );
-                  context.route.navigateToPage(const CustomBottomBar());
+                  // TODO: konum degeri eger bos ise yada deger gelene kadar herhangi bir yere navigate etme
+                  // TODO: suan bununla alakali herhangi bir logic yok ondan dolayi hata firlatabilir bu kisim.
+                  context.route.navigateToPageAndRemove(
+                    CustomBottomBar(
+                      location: state.position!,
+                    ),
+                  );
                 } else {
                   CustomToastMessage.createToastMessage(
                     context: context,
@@ -93,7 +101,7 @@ class _LocationExplainPageState extends State<LocationExplainPage> {
                   );
                 }
 
-                print('${viewModel.state.position}');
+                print('${state.position}');
               },
 
               // width: context.sized.width,

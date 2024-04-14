@@ -31,9 +31,18 @@ class _SplashPageViewState extends State<SplashPageView>
         // appBar: AppBar(),
         body: BlocConsumer<SplashCubit, SplashState>(
           listener: (context, state) {
-            state.isContinue ?? false
-                ? context.route.navigateToPage(const CustomBottomBar())
-                : context.route.navigateToPage(const WelcomeToAppPage());
+            if (state.isContinue ?? false) {
+              viewModel.getLocation();
+              if (state.location != null) {
+                context.route.navigateToPageAndRemove(
+                  CustomBottomBar(location: state.location!),
+                );
+              }
+            } else {
+              context.route.navigateToPageAndRemove(
+                const WelcomeToAppPage(),
+              );
+            }
           },
           builder: (context, state) {
             return Center(

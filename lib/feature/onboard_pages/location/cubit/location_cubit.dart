@@ -22,7 +22,7 @@ class LocationCubit extends Cubit<LocationState> {
     if (permission == LocationPermission.denied) {
       await Geolocator.requestPermission();
     }
-
+    emit(state.copyWith(isRequiredPermission: false));
     return Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.medium,
     ).catchError(print);
