@@ -1,13 +1,21 @@
 // ignore_for_file: public_member_api_docs
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_maps_note/core/localization/custom_localization.dart';
 import 'package:flutter_maps_note/feature/splash_screen/splash_page_view.dart';
 import 'package:flutter_maps_note/get_it.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   setup();
+
   await getIt.allReady();
-  runApp(const MyApp());
+
+  await EasyLocalization.ensureInitialized();
+
+  runApp(CustomLocalization(child: const MyApp()));
+
 }
 
 class MyApp extends StatelessWidget {
@@ -15,6 +23,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
+      
       title: 'Maps Note',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

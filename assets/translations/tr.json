@@ -1,0 +1,26 @@
+{
+    "onboardPages": {
+        "WelcomeToAppPage": {
+            "welcomeMessage": "Uygulama Hoş Geldiniz",
+            "welcomeToAppPageButton": "İleri"
+        },
+        "AppExplainToPage": {},
+        "LocationExplainToPage": {
+            "locationMomenteryMessage": "Uygulamamızın tam işlevselliğinden faydalanabilmeniz için konumunuzu kullanmamız gerekiyor. Konum bilgileriniz, size daha iyi hizmet sunabilmek, size yakındaki olanakları bulmanıza yardımcı olmak ve daha iyi bir deneyim sağlamak için kullanılacaktır.(Bu zorunlu bir izindir, eğer izin vermezseniz uygulama kapanacaktır!.)",
+            "locationMomenteryMessageButton": "İleri"
+        }
+    },
+    "HomePage": {},
+    "SavePage": {},
+    "SettingsPage": {},
+    "general": {
+        "Appbar": {
+            "maps": "Harita",
+            "saveAs": "Kaydedilenler",
+            "settings": "Ayarlar"
+        },
+        "buttons": {
+            "languageChange": "Dili Değiştir"
+        }
+    }
+}

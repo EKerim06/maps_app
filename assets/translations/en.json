@@ -1,0 +1,26 @@
+{
+    "onboardPages": {
+        "WelcomeToAppPage": {
+            "welcomeMessage": "Welcome To App",
+            "welcomeToAppPageButton": "Okey"
+        },
+        "AppExplainToPage": {},
+        "LocationExplainToPage": {
+            "locationMomenteryMessage": "To fully utilize our application's functionality, we need to use your location. Your location information will be used to provide you with better service, help you find nearby amenities, and enhance your overall experience. (This is a mandatory permission, if you do not grant permission, the application will close!)",
+            "locationMomenteryMessageButton": "Okey"
+        }
+    },
+    "HomePage": {},
+    "SavePage": {},
+    "SettingPage": {},
+    "general": {
+        "Appbar": {
+            "maps": "Maps",
+            "saveAs": "Save As",
+            "settings": "Settings"
+        },
+        "buttons":{
+            "languageChange":"Language change"
+        }
+    }
+}

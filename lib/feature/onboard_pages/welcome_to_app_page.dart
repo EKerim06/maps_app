@@ -1,5 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_maps_note/constants/string_constants.dart';
+import 'package:flutter_maps_note/core/localization/locale_keys.g.dart';
 import 'package:flutter_maps_note/feature/onboard_pages/base_class/onboard_page_base_class.dart';
 import 'package:flutter_maps_note/feature/onboard_pages/location/location_explain_page.dart';
 import 'package:flutter_maps_note/utility/widget/buttons/normal_buttom/normal_buttons.dart';
@@ -18,16 +19,18 @@ class WelcomeToAppPage extends StatelessWidget {
         package: 'gen',
         height: context.sized.dynamicHeight(0.3),
       ),
-      message: Text(
-        StringConstants.welcomeToAppMessage,
+      message: const Text(
+        LocaleKeys.onboardPages_WelcomeToAppPage_welcomeMessage,
         textAlign: TextAlign.center,
-      ),
+      ).tr(),
       elevatedButton: NormalButtons(
         onPressed: () =>
             context.route.navigateToPageAndRemove(const LocationExplainPage()),
         width: context.sized.width,
         margin: context.padding.horizontalLow,
-        child: Text(StringConstants.onbardButtonWelcomeToAppButton),
+        child: const Text(
+          LocaleKeys.onboardPages_WelcomeToAppPage_welcomeToAppPageButton,
+        ).tr(),
       ),
     );
   }

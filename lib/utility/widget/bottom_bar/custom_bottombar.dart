@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_maps_note/core/localization/locale_keys.g.dart';
 import 'package:flutter_maps_note/feature/home/home_page_view.dart';
 import 'package:flutter_maps_note/feature/save_page/save_page.dart';
 import 'package:flutter_maps_note/feature/settings_page/settings_page.dart';
@@ -65,18 +67,18 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
               showSelectedLabels: true,
               showUnselectedLabels: false,
               currentIndex: bottomViewModel.state.currentBottomStateIndex,
-              items: const [
+              items: [
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.explore),
-                  label: 'Harita',
+                  icon: const Icon(Icons.explore),
+                  label: LocaleKeys.general_Appbar_maps.tr(),
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.flag),
-                  label: 'Kaydedilenler',
+                  icon: const Icon(Icons.flag),
+                  label: LocaleKeys.general_Appbar_saveAs.tr(),
                 ),
                 BottomNavigationBarItem(
-                  label: 'Ayarlar',
-                  icon: Icon(Icons.settings),
+                  icon: const Icon(Icons.settings),
+                  label: LocaleKeys.general_Appbar_settings.tr(),
                 ),
               ],
             ),
