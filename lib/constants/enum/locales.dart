@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 ///localization supported and config
+
 enum Locales {
   /// support language tr
   tr(Locale('tr', 'TR')),
@@ -13,4 +14,5 @@ enum Locales {
 
   /// locale veriable
   final Locale locale;
+
 }

@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_maps_note/constants/string_constants.dart';
+import 'package:flutter_maps_note/constants/utility/string_constants.dart';
 import 'package:flutter_maps_note/core/cache/shared_preferences/shared_preferences_manager.dart';
 import 'package:flutter_maps_note/core/cache/shared_preferences/shared_preferences_service.dart';
 import 'package:flutter_maps_note/feature/onboard_pages/base_class/onboard_page_base_class.dart';
@@ -87,13 +87,13 @@ class _LocationExplainPageState extends State<LocationExplainPage> {
                     context: context,
                     message: 'permission granted',
                   );
-                  // TODO: konum degeri eger bos ise yada deger gelene kadar herhangi bir yere navigate etme
-                  // TODO: suan bununla alakali herhangi bir logic yok ondan dolayi hata firlatabilir bu kisim.
-                  context.route.navigateToPageAndRemove(
-                    CustomBottomBar(
-                      location: state.position!,
-                    ),
-                  );
+                  state.position != null
+                      ? context.route.navigateToPageAndRemove(
+                          CustomBottomBar(
+                            location: state.position!,
+                          ),
+                        )
+                      : null;
                 } else {
                   CustomToastMessage.createToastMessage(
                     context: context,

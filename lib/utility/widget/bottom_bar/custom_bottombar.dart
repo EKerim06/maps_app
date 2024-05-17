@@ -7,6 +7,7 @@ import 'package:flutter_maps_note/feature/save_page/save_page.dart';
 import 'package:flutter_maps_note/feature/settings_page/settings_page.dart';
 
 import 'package:flutter_maps_note/utility/widget/bottom_bar/cubit/bottombar_view_model.dart';
+import 'package:gen/gen/colors.gen.dart';
 import 'package:geolocator/geolocator.dart';
 
 ///Custom bottom appbar
@@ -45,7 +46,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
   Widget build(BuildContext context) {
     final topLevelPages = [
       HomePageView(
-        location: widget.location,
+        currentLocation: widget.location,
       ),
       const SavePage(),
       const SettingsPage(),
@@ -67,6 +68,10 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
               showSelectedLabels: true,
               showUnselectedLabels: false,
               currentIndex: bottomViewModel.state.currentBottomStateIndex,
+              selectedIconTheme: const IconThemeData(
+                color: ColorName.negativeColor,
+              ),
+              selectedItemColor: ColorName.negativeColor,
               items: [
                 BottomNavigationBarItem(
                   icon: const Icon(Icons.explore),

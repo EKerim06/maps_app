@@ -10,9 +10,23 @@
             "locationMomenteryMessageButton": "İleri"
         }
     },
-    "HomePage": {},
+    "HomePage": {
+        "BottomSheet": {
+            "textFormFieldHint": "İsim",
+            "textFormFieldError": "2 karakterden küçük olamaz",
+            "textFormFieldHelperText": "Min 2 karakter.Sonradan değiştirilebilir.",
+            "textFormFieldLabelText": "Lokasyon adı",
+            "dropDownMenuHintText": "Seçtiğiniz mesafe içine girdiğinizde bildirim alacaksınız!.",
+            "bottomSheetButtonCancelButton": "İptal",
+            "bottomSheetButtonConfirmButton": "Onayla"
+        }
+    },
     "SavePage": {},
-    "SettingsPage": {},
+    "SettingPage": {
+        "Features": {
+            "language": "Dili degistir"
+        }
+    },
     "general": {
         "Appbar": {
             "maps": "Harita",
@@ -21,6 +35,12 @@
         },
         "buttons": {
             "languageChange": "Dili Değiştir"
+        },
+        "updatingArea": {
+            "HomePage": {
+                "mapsOnTapUpdate": "Seçilen yer hakkında detaylı bilgiler yakında eklenecek.",
+                "mapsOnTapUserInformation": "Şuanlık 1 defa bildirim aldıktan sonra o değer silinecektir"
+            }
         }
     }
 }

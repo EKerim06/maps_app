@@ -29,7 +29,16 @@ flutter_gen:
   integrations:
     flutter_svg: true
     lottie: true
-
+  colors:
+    inputs:
+      - assets/color/colors.xml
+  exclude:
+   - assets/icons/ic_baby.png
+   - assets/icons/ic_car_wash.png
+   - assets/icons/ic_food.png
+   - assets/icons/ic_pets.png
+   - assets/icons/ic_pharmacy.png
+   - assets/icons/ic_shop_bag.png
 
 
 # For information on the generic Dart part of this file, see the
@@ -40,6 +49,8 @@ flutter:
   assets:
     - assets/image/
     - assets/animations/
+    - assets/color/
+    - assets/icons/
   # For details regarding assets in packages, see
   # https://flutter.dev/assets-and-images/#from-packages
   #

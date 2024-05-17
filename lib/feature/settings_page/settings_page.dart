@@ -14,15 +14,43 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-        onPressed: () {
-          CustomLocalization.updateLanguage(
-            context: context,
-            value:  Locales.en,
-          );
-        },
-        child: const Text(LocaleKeys.general_buttons_languageChange).tr(),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+      child: SafeArea(
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(LocaleKeys.SettingPage_Features_language)
+                    .tr(),
+                DropdownButton(
+                  hint: Text(
+                    CustomLocalization.currentLanguage(context: context),
+                  ),
+                  items: const [
+                    DropdownMenuItem<Locales>(
+                      value: Locales.en,
+                      child: Text('US'),
+                    ),
+                    DropdownMenuItem<Locales>(
+                      value: Locales.tr,
+                      child: Text('TR'),
+                    ),
+                  ],
+                  onChanged: (value) {
+                    value != null
+                        ? CustomLocalization.updateLanguage(
+                            context: context,
+                            value: value,
+                          )
+                        : null;
+                  },
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

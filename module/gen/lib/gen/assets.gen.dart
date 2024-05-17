@@ -23,6 +23,45 @@ class $AssetsAnimationsGen {
   List<LottieGenImage> get values => [mapsSplashScreenAnim];
 }
 
+class $AssetsColorGen {
+  const $AssetsColorGen();
+
+  /// File path: assets/color/colors.xml
+  String get colors => 'assets/color/colors.xml';
+
+  /// List of all assets
+  List<String> get values => [colors];
+}
+
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// File path: assets/icons/ic_baby.png
+  AssetGenImage get icBaby => const AssetGenImage('assets/icons/ic_baby.png');
+
+  /// File path: assets/icons/ic_car_wash.png
+  AssetGenImage get icCarWash =>
+      const AssetGenImage('assets/icons/ic_car_wash.png');
+
+  /// File path: assets/icons/ic_food.png
+  AssetGenImage get icFood => const AssetGenImage('assets/icons/ic_food.png');
+
+  /// File path: assets/icons/ic_pets.png
+  AssetGenImage get icPets => const AssetGenImage('assets/icons/ic_pets.png');
+
+  /// File path: assets/icons/ic_pharmacy.png
+  AssetGenImage get icPharmacy =>
+      const AssetGenImage('assets/icons/ic_pharmacy.png');
+
+  /// File path: assets/icons/ic_shop_bag.png
+  AssetGenImage get icShopBag =>
+      const AssetGenImage('assets/icons/ic_shop_bag.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values =>
+      [icBaby, icCarWash, icFood, icPets, icPharmacy, icShopBag];
+}
+
 class $AssetsImageGen {
   const $AssetsImageGen();
 
@@ -47,7 +86,83 @@ class Assets {
   Assets._();
 
   static const $AssetsAnimationsGen animations = $AssetsAnimationsGen();
+  static const $AssetsColorGen color = $AssetsColorGen();
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImageGen image = $AssetsImageGen();
+}
+
+class AssetGenImage {
+  const AssetGenImage(this._assetName);
+
+  final String _assetName;
+
+  Image image({
+    Key? key,
+    AssetBundle? bundle,
+    ImageFrameBuilder? frameBuilder,
+    ImageErrorWidgetBuilder? errorBuilder,
+    String? semanticLabel,
+    bool excludeFromSemantics = false,
+    double? scale,
+    double? width,
+    double? height,
+    Color? color,
+    Animation<double>? opacity,
+    BlendMode? colorBlendMode,
+    BoxFit? fit,
+    AlignmentGeometry alignment = Alignment.center,
+    ImageRepeat repeat = ImageRepeat.noRepeat,
+    Rect? centerSlice,
+    bool matchTextDirection = false,
+    bool gaplessPlayback = false,
+    bool isAntiAlias = false,
+    String? package,
+    FilterQuality filterQuality = FilterQuality.low,
+    int? cacheWidth,
+    int? cacheHeight,
+  }) {
+    return Image.asset(
+      _assetName,
+      key: key,
+      bundle: bundle,
+      frameBuilder: frameBuilder,
+      errorBuilder: errorBuilder,
+      semanticLabel: semanticLabel,
+      excludeFromSemantics: excludeFromSemantics,
+      scale: scale,
+      width: width,
+      height: height,
+      color: color,
+      opacity: opacity,
+      colorBlendMode: colorBlendMode,
+      fit: fit,
+      alignment: alignment,
+      repeat: repeat,
+      centerSlice: centerSlice,
+      matchTextDirection: matchTextDirection,
+      gaplessPlayback: gaplessPlayback,
+      isAntiAlias: isAntiAlias,
+      package: package,
+      filterQuality: filterQuality,
+      cacheWidth: cacheWidth,
+      cacheHeight: cacheHeight,
+    );
+  }
+
+  ImageProvider provider({
+    AssetBundle? bundle,
+    String? package,
+  }) {
+    return AssetImage(
+      _assetName,
+      bundle: bundle,
+      package: package,
+    );
+  }
+
+  String get path => _assetName;
+
+  String get keyName => _assetName;
 }
 
 class SvgGenImage {

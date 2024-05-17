@@ -38,6 +38,7 @@ class LocationCubit extends Cubit<LocationState> {
       } else {
         emit(state.copyWith(isRequiredPermission: false));
         print('location viewModel: $data');
+        emit(state.copyWith(position: data));
         sharedPreferencesService?.setOnboardingPageShowState(isValue: false);
       }
     });

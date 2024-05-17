@@ -177,6 +177,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
+  cronet_http:
+    dependency: transitive
+    description:
+      name: cronet_http
+      sha256: "9b9f00ae48971bc8a8cbdd4528bd35511adce00fb79d1ebf9f9907667056640f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
   cross_file:
     dependency: transitive
     description:
@@ -201,6 +209,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
+  cupertino_http:
+    dependency: transitive
+    description:
+      name: cupertino_http
+      sha256: "20c167fd843c9ff6fc25cc4a0e8efa4180dfe119fb6d18c3c55104113e9cfc6f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.4.0"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -508,6 +524,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.1"
+  hive:
+    dependency: transitive
+    description:
+      name: hive
+      sha256: "8dcf6db979d7933da8217edcec84e9df1bdb4e4edc7fc77dbd5aa74356d6d941"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.3"
+  hive_flutter:
+    dependency: "direct main"
+    description:
+      name: hive_flutter
+      sha256: dca1da446b1d808a51689fb5d0c6c9510c0a2ba01e22805d492c73b68e33eecc
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
+  hive_generator:
+    dependency: "direct dev"
+    description:
+      name: hive_generator
+      sha256: "06cb8f58ace74de61f63500564931f9505368f45f98958bd7a6c35ba24159db4"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   html:
     dependency: transitive
     description:
@@ -556,6 +596,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
+  jni:
+    dependency: transitive
+    description:
+      name: jni
+      sha256: "499558e919997adfc45809a66caf0b95b91393e23289dd2826b152f8f04e6611"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.3"
   js:
     dependency: transitive
     description:
@@ -684,6 +732,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  native_dio_adapter:
+    dependency: transitive
+    description:
+      name: native_dio_adapter
+      sha256: "4c925ba15a44478be0eb6e97b62a1c1d07e56b28e566283dbcb15e58418bdaae"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.3.0"
   nested:
     dependency: transitive
     description:
@@ -844,6 +900,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.3"
+  retry:
+    dependency: transitive
+    description:
+      name: retry
+      sha256: "822e118d5b3aafed083109c72d5f484c6dc66707885e07c0fbcb8b986bba7efc"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.2"
   sanitize_html:
     dependency: transitive
     description:
@@ -1169,6 +1233,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.1.0"
+  vexana:
+    dependency: "direct main"
+    description:
+      name: vexana
+      sha256: "6f78c6908590fe9bbbd73b0e82ba1e6de7355c85a2970e68618511c260eb2fa6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.1"
   vm_service:
     dependency: transitive
     description:
@@ -1193,6 +1265,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.1"
+  web_socket:
+    dependency: transitive
+    description:
+      name: web_socket
+      sha256: "6bbfb36ea811dac44d18511648687d5334cbad736f45880520f34995861d9b11"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.1"
   web_socket_channel:
     dependency: transitive
     description:

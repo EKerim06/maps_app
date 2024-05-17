@@ -10,17 +10,37 @@
             "locationMomenteryMessageButton": "Okey"
         }
     },
-    "HomePage": {},
+    "HomePage": {
+        "BottomSheet": {
+            "textFormFieldHint": "Name",
+            "textFormFieldError": "Cannot be less than 2 characters",
+            "textFormFieldHelperText": "Min 2 characters. Can be changed later.",
+            "textFormFieldLabelText": "Location name",
+            "dropDownMenuHintText": "You will receive a notification when you enter the selected distance!.",
+            "bottomSheetButtonCancelButton": "Cancel",
+            "bottomSheetButtonConfirmButton": "Confirm"
+        }
+    },
     "SavePage": {},
-    "SettingPage": {},
+    "SettingPage": {
+        "Features": {
+            "language": "Change language"
+        }
+    },
     "general": {
         "Appbar": {
             "maps": "Maps",
             "saveAs": "Save As",
             "settings": "Settings"
         },
-        "buttons":{
-            "languageChange":"Language change"
+        "buttons": {
+            "languageChange": "Language change"
+        },
+        "updatingArea": {
+            "HomePage": {
+                "mapsOnTapUpdate": "Detailed information about the selected location will be added soon.",
+                "mapsOnTapUserInformation": "Currently, the value will be deleted after receiving a notification once."
+            }
         }
     }
 }

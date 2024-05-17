@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_maps_note/constants/string_constants.dart';
+import 'package:flutter_maps_note/constants/utility/string_constants.dart';
 import 'package:flutter_maps_note/core/cache/shared_preferences/shared_preferences_manager.dart';
 import 'package:flutter_maps_note/feature/onboard_pages/welcome_to_app_page.dart';
 import 'package:flutter_maps_note/feature/splash_screen/cubit/splash_cubit.dart';
