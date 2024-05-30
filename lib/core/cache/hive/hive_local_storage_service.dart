@@ -22,6 +22,7 @@ class HiveService extends HiveManager {
     final box = Hive.box<SaveLocation>(LocaleCacheKeys.HIVE_LOCATION_KEYS.name);
 
     final response = box.values.toList();
+    
     return response;
   }
 

@@ -2,12 +2,12 @@
     "onboardPages": {
         "WelcomeToAppPage": {
             "welcomeMessage": "Welcome To App",
-            "welcomeToAppPageButton": "Okey"
+            "welcomeToAppPageButton": "Next"
         },
         "AppExplainToPage": {},
         "LocationExplainToPage": {
-            "locationMomenteryMessage": "To fully utilize our application's functionality, we need to use your location. Your location information will be used to provide you with better service, help you find nearby amenities, and enhance your overall experience. (This is a mandatory permission, if you do not grant permission, the application will close!)",
-            "locationMomenteryMessageButton": "Okey"
+            "locationMomenteryMessage": "To fully utilize the functionality of our app, we need to use your location. Your location information will be used to provide you with better service, help you find nearby amenities, and enhance your overall experience. (This is a mandatory permission, if you do not grant it, the app will close!)",
+            "locationMomenteryMessageButton": "Next"
         }
     },
     "HomePage": {
@@ -16,12 +16,28 @@
             "textFormFieldError": "Cannot be less than 2 characters",
             "textFormFieldHelperText": "Min 2 characters. Can be changed later.",
             "textFormFieldLabelText": "Location name",
-            "dropDownMenuHintText": "You will receive a notification when you enter the selected distance!.",
+            "dropDownMenuHintText": "You will receive a notification when you enter the selected distance!",
             "bottomSheetButtonCancelButton": "Cancel",
             "bottomSheetButtonConfirmButton": "Confirm"
         }
     },
-    "SavePage": {},
+    "SavePage": {
+        "Appbar": {
+            "titleText": "Saved Data",
+            "actions": {
+                "deleteAllDataAlertDialog": {
+                    "title": "All data will be deleted!",
+                    "content": "This action cannot be undone and will delete all saved locations. Are you sure?",
+                    "positiveButton": "Delete",
+                    "negativeButton": "Cancel"
+                }
+            }
+        },
+        "Body": {
+            "listEmpty": "No data has been saved!",
+            "savedDataLocationName": "Location"
+        }
+    },
     "SettingPage": {
         "Features": {
             "language": "Change language"
@@ -30,16 +46,32 @@
     "general": {
         "Appbar": {
             "maps": "Maps",
-            "saveAs": "Save As",
+            "saveAs": "Saved",
             "settings": "Settings"
         },
         "buttons": {
-            "languageChange": "Language change"
+            "languageChange": "Change Language"
         },
         "updatingArea": {
             "HomePage": {
                 "mapsOnTapUpdate": "Detailed information about the selected location will be added soon.",
                 "mapsOnTapUserInformation": "Currently, the value will be deleted after receiving a notification once."
+            }
+        },
+        "alertDialogs": {
+            "PositiveAndNegativeAlertDialog": {
+                "title": "Will be deleted",
+                "content": "This saved data will be deleted. Do you confirm? This action cannot be undone.",
+                "positiveButton": "Exit",
+                "negativeButton": "Delete"
+            },
+            "DetailDialog": {
+                "title": "Detail",
+                "positiveButton": "Close",
+                "locationName": "Location name",
+                "LokasyonImage": "Location image",
+                "location": "Location",
+                "negativeButton": "Delete"
             }
         }
     }

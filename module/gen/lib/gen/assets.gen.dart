@@ -60,6 +60,10 @@ class $AssetsIconsGen {
   /// List of all assets
   List<AssetGenImage> get values =>
       [icBaby, icCarWash, icFood, icPets, icPharmacy, icShopBag];
+
+  AssetGenImage getIconsWithPath({required String path}) => AssetGenImage(path);
+  
+  
 }
 
 class $AssetsImageGen {

@@ -1,6 +1,5 @@
 // ignore_for_file: public_member_api_docs
 
-import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 
 part 'save_location.g.dart';
@@ -11,7 +10,7 @@ class SaveLocation extends HiveObject {
     required this.name,
     required this.latitude,
     required this.longitude,
-    required this.image,
+    required this.imagePath,
     required this.distance,
   });
 
@@ -25,7 +24,7 @@ class SaveLocation extends HiveObject {
   double longitude;
 
   @HiveField(3)
-  Image image;
+  String imagePath;
 
   @HiveField(4)
   int distance;

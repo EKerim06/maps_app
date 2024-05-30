@@ -8,7 +8,6 @@ import 'package:flutter_maps_note/utility/func/general/general_func.dart';
 import 'package:flutter_maps_note/utility/func/validate/validate_fun.dart';
 import 'package:flutter_maps_note/utility/widget/buttons/bottom_sheet_button/custom_bottom_sheet_button.dart';
 import 'package:flutter_maps_note/utility/widget/texts/center_text.dart';
-import 'package:gen/gen/assets.gen.dart';
 import 'package:gen/gen/colors.gen.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:kartal/kartal.dart';
@@ -122,13 +121,16 @@ class _DraggableListViewState extends State<_DraggableListView> {
   late final HiveManager _manager;
 
   late final TextEditingController controller;
-  late final int selectedDistance;
+  late final ValueNotifier<int> selectedDistance;
+
+  // late final PageController pageController;
 
   @override
   void initState() {
     _manager = HiveService();
     controller = TextEditingController();
-    selectedDistance = 1000;
+    selectedDistance = ValueNotifier(1000);
+    // pageController = PageController();
     super.initState();
   }
 
@@ -139,8 +141,9 @@ class _DraggableListViewState extends State<_DraggableListView> {
   @override
   Widget build(BuildContext context) {
     final imageList = AppGeneralFunction.homePageCategoryImageCreate();
+    final imagePathList = AppGeneralFunction.categoryImagePath();
 
-    String selectedImagePath = '';
+    var selectedImagePath = '';
 
     selectedItems = ValueNotifier<int>(-1); // Başlangıçta seçili bir eleman yok
 
@@ -233,15 +236,24 @@ class _DraggableListViewState extends State<_DraggableListView> {
           },
         ),
         context.sized.emptySizedHeightBoxNormal,
-        DropdownMenu<int>(
-          onSelected: (value) {
-            if (value != null) {
-              value = selectedDistance;
-            }
+        ValueListenableBuilder(
+          valueListenable: selectedDistance,
+          builder: (context, value, child) {
+            return DropdownButtonFormField<int>(
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                // hintText: 'Olusacak cemberin capi',
+                helper:
+                    Text('Ne kadar mesafeden uyari almak istediginizi secin.'),
+                hintStyle: TextStyle(color: Colors.black),
+              ),
+              items: AppGeneralFunction.bottomSheetDropDownItems(),
+              value: selectedDistance.value,
+              onChanged: (value) =>
+                  value != null ? selectedDistance.value = value : null,
+              borderRadius: BorderRadius.zero,
+            );
           },
-          dropdownMenuEntries: AppGeneralFunction.bottomSheetDropDownItems(),
-          width: context.sized.dynamicWidth(.9),
-          hintText: LocaleKeys.HomePage_BottomSheet_dropDownMenuHintText.tr(),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -253,18 +265,24 @@ class _DraggableListViewState extends State<_DraggableListView> {
               ).tr(),
               onPressed: () {},
             ),
-            SizedBox(width: context.sized.dynamicWidth(.09)),
+            SizedBox(
+              width: context.sized.dynamicWidth(.09),
+            ),
             BottomSheetButton(
               onPressed: () {
                 if (widget.formKey.currentState?.validate() ?? false) {
+                  selectedImagePath = imagePathList[selectedItems.value];
                   final saveToLocation = SaveLocation(
                     name: controller.text,
                     latitude: widget.location.latitude,
                     longitude: widget.location.longitude,
-                    image: imageList[selectedItems.value],
-                    distance: selectedDistance,
+                    imagePath: selectedImagePath,
+                    distance: selectedDistance.value,
                   );
+
                   saveLocation(location: saveToLocation);
+
+                  // pageController.jumpToPage(1);
                 }
               },
               buttonColor: ColorName.main,

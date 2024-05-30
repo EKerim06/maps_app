@@ -40,16 +40,27 @@ class AppGeneralFunction {
   }
 
   /// create dropdownMenuEntry
-  static List<DropdownMenuEntry<int>> bottomSheetDropDownItems() {
+  static List<DropdownMenuItem<int>> bottomSheetDropDownItems() {
     return [
-      const DropdownMenuEntry(value: 1000, label: '500 m'),
-      const DropdownMenuEntry(value: 1000, label: '750 m'),
-      const DropdownMenuEntry(value: 1000, label: '1 km'),
-      const DropdownMenuEntry(value: 1000, label: '1.5 km'),
-      const DropdownMenuEntry(value: 1000, label: '2 km'),
+      const DropdownMenuItem(value: 500, child: Text('500 Metre')),
+      const DropdownMenuItem(value: 1000, child: Text('1000 Metre')),
+      const DropdownMenuItem(value: 1500, child: Text('1500 Metre')),
+      const DropdownMenuItem(value: 2000, child: Text('2000 Metre')),
     ];
   }
 
+  static List<String> categoryImagePath() {
+    return [
+      Assets.icons.icBaby.path,
+      Assets.icons.icCarWash.path,
+      Assets.icons.icFood.path,
+      Assets.icons.icPets.path,
+      Assets.icons.icPharmacy.path,
+      Assets.icons.icShopBag.path,
+    ];
+  }
 
-
+  static String formatCoordinate(double coordinate, int decimalPlaces) {
+    return coordinate.toStringAsFixed(decimalPlaces);
+  }
 }

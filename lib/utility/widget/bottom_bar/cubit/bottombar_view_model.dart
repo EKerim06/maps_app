@@ -14,4 +14,7 @@ class BottombarViewModel extends Cubit<BottombarViewState> {
   void setCurrentIndex(int currentIndex) {
     emit(state.copyWith(currentBottomStateIndex: currentIndex));
   }
+
+  
+
 }

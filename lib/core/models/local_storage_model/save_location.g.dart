@@ -20,7 +20,7 @@ class SaveLocationAdapter extends TypeAdapter<SaveLocation> {
       name: fields[0] as String,
       latitude: fields[1] as double,
       longitude: fields[2] as double,
-      image: fields[3] as Image,
+      imagePath: fields[3] as String,
       distance: fields[4] as int,
     );
   }
@@ -36,7 +36,7 @@ class SaveLocationAdapter extends TypeAdapter<SaveLocation> {
       ..writeByte(2)
       ..write(obj.longitude)
       ..writeByte(3)
-      ..write(obj.image)
+      ..write(obj.imagePath)
       ..writeByte(4)
       ..write(obj.distance);
   }

@@ -18,6 +18,17 @@ abstract class  LocaleKeys {
   static const HomePage_BottomSheet_bottomSheetButtonConfirmButton = 'HomePage.BottomSheet.bottomSheetButtonConfirmButton';
   static const HomePage_BottomSheet = 'HomePage.BottomSheet';
   static const HomePage = 'HomePage';
+  static const SavePage_Appbar_titleText = 'SavePage.Appbar.titleText';
+  static const SavePage_Appbar_actions_deleteAllDataAlertDialog_title = 'SavePage.Appbar.actions.deleteAllDataAlertDialog.title';
+  static const SavePage_Appbar_actions_deleteAllDataAlertDialog_content = 'SavePage.Appbar.actions.deleteAllDataAlertDialog.content';
+  static const SavePage_Appbar_actions_deleteAllDataAlertDialog_positiveButton = 'SavePage.Appbar.actions.deleteAllDataAlertDialog.positiveButton';
+  static const SavePage_Appbar_actions_deleteAllDataAlertDialog_negativeButton = 'SavePage.Appbar.actions.deleteAllDataAlertDialog.negativeButton';
+  static const SavePage_Appbar_actions_deleteAllDataAlertDialog = 'SavePage.Appbar.actions.deleteAllDataAlertDialog';
+  static const SavePage_Appbar_actions = 'SavePage.Appbar.actions';
+  static const SavePage_Appbar = 'SavePage.Appbar';
+  static const SavePage_Body_listEmpty = 'SavePage.Body.listEmpty';
+  static const SavePage_Body_savedDataLocationName = 'SavePage.Body.savedDataLocationName';
+  static const SavePage_Body = 'SavePage.Body';
   static const SavePage = 'SavePage';
   static const SettingPage_Features_language = 'SettingPage.Features.language';
   static const SettingPage_Features = 'SettingPage.Features';
@@ -32,6 +43,19 @@ abstract class  LocaleKeys {
   static const general_updatingArea_HomePage_mapsOnTapUserInformation = 'general.updatingArea.HomePage.mapsOnTapUserInformation';
   static const general_updatingArea_HomePage = 'general.updatingArea.HomePage';
   static const general_updatingArea = 'general.updatingArea';
+  static const general_alertDialogs_PositiveAndNegativeAlertDialog_title = 'general.alertDialogs.PositiveAndNegativeAlertDialog.title';
+  static const general_alertDialogs_PositiveAndNegativeAlertDialog_content = 'general.alertDialogs.PositiveAndNegativeAlertDialog.content';
+  static const general_alertDialogs_PositiveAndNegativeAlertDialog_positiveButton = 'general.alertDialogs.PositiveAndNegativeAlertDialog.positiveButton';
+  static const general_alertDialogs_PositiveAndNegativeAlertDialog_negativeButton = 'general.alertDialogs.PositiveAndNegativeAlertDialog.negativeButton';
+  static const general_alertDialogs_PositiveAndNegativeAlertDialog = 'general.alertDialogs.PositiveAndNegativeAlertDialog';
+  static const general_alertDialogs_DetailDialog_title = 'general.alertDialogs.DetailDialog.title';
+  static const general_alertDialogs_DetailDialog_positiveButton = 'general.alertDialogs.DetailDialog.positiveButton';
+  static const general_alertDialogs_DetailDialog_locationName = 'general.alertDialogs.DetailDialog.locationName';
+  static const general_alertDialogs_DetailDialog_LokasyonImage = 'general.alertDialogs.DetailDialog.LokasyonImage';
+  static const general_alertDialogs_DetailDialog_location = 'general.alertDialogs.DetailDialog.location';
+  static const general_alertDialogs_DetailDialog_negativeButton = 'general.alertDialogs.DetailDialog.negativeButton';
+  static const general_alertDialogs_DetailDialog = 'general.alertDialogs.DetailDialog';
+  static const general_alertDialogs = 'general.alertDialogs';
   static const general = 'general';
 
 }

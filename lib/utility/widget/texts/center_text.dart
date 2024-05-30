@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 
 /// Center text
 class CenterText extends StatelessWidget {
-  ///center text constructor
-  final String message;
   const CenterText({
     required this.message,
     super.key,
   });
+  ///center text constructor
+  final String message;
 
   @override
   Widget build(BuildContext context) {

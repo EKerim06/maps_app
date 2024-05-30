@@ -34,12 +34,12 @@ class _SplashPageViewState extends State<SplashPageView>
             if (state.isContinue ?? false) {
               viewModel.getLocation();
               if (state.location != null) {
-                context.route.navigateToPageAndRemove(
+                context.route.navigateToPage(
                   CustomBottomBar(location: state.location!),
                 );
               }
             } else {
-              context.route.navigateToPageAndRemove(
+              context.route.navigateToPage(
                 const WelcomeToAppPage(),
               );
             }

@@ -88,7 +88,7 @@ class _LocationExplainPageState extends State<LocationExplainPage> {
                     message: 'permission granted',
                   );
                   state.position != null
-                      ? context.route.navigateToPageAndRemove(
+                      ? context.route.navigateToPage(
                           CustomBottomBar(
                             location: state.position!,
                           ),

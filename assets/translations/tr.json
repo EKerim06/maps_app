@@ -21,7 +21,23 @@
             "bottomSheetButtonConfirmButton": "Onayla"
         }
     },
-    "SavePage": {},
+    "SavePage": {
+        "Appbar": {
+            "titleText": "Kayıtlı veriler",
+            "actions":{
+                "deleteAllDataAlertDialog":{
+                    "title":"Tüm veriler silinecektir!",
+                    "content":"Bu işlem geriye alınamaz ve kayıt edilen tüm lokasyonları siler. Emin misiniz",
+                    "positiveButton":"Sil",
+                    "negativeButton":"İptal"
+                }
+            }
+        },
+        "Body": {
+            "listEmpty": "Kayıt edilmiş herhangi bir veri yok !.",
+            "savedDataLocationName": "Lokasyon"
+        }
+    },
     "SettingPage": {
         "Features": {
             "language": "Dili degistir"
@@ -40,6 +56,22 @@
             "HomePage": {
                 "mapsOnTapUpdate": "Seçilen yer hakkında detaylı bilgiler yakında eklenecek.",
                 "mapsOnTapUserInformation": "Şuanlık 1 defa bildirim aldıktan sonra o değer silinecektir"
+            }
+        },
+        "alertDialogs": {
+            "PositiveAndNegativeAlertDialog": {
+                "title": "Silinecek",
+                "content": "Kayıt edilen bu veri silinecektir. Onaylıyor musunuz? Bu işlem geriye alınamaz.",
+                "positiveButton": "Çık",
+                "negativeButton": "Sil"
+            },
+            "DetailDialog": {
+                "title": "Detay",
+                "positiveButton": "Kapat",
+                "locationName": "Lokasyon adı",
+                "LokasyonImage": "Lokasyon resmi",
+                "location": "Konum",
+                "negativeButton": "Sil"
             }
         }
     }
