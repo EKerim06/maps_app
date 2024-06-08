@@ -12,6 +12,9 @@ class DetailDialog {
     required InfoText locationName,
     required InfoText locationImage,
     required InfoText location,
+    required InfoText againsNumber,
+    required InfoText remainingAgainsNumber,
+    required InfoText frequency,
     VoidCallback? negativeButtonOnPressed,
     String? content,
     String? negativeButton,
@@ -25,7 +28,7 @@ class DetailDialog {
           child: Container(
             padding: context.padding.medium,
             // width: context.sized.dynamicHeight(.8),
-            height: context.sized.dynamicHeight(.40),
+            height: context.sized.dynamicHeight(.55),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               // mainAxisAlignment: MainAxisAlignment.end,
@@ -42,6 +45,12 @@ class DetailDialog {
                 context.sized.emptySizedHeightBoxLow3x,
                 locationName,
                 context.sized.emptySizedHeightBoxLow3x,
+                frequency,
+                context.sized.emptySizedHeightBoxLow3x,
+                againsNumber,
+                context.sized.emptySizedHeightBoxLow3x,
+                remainingAgainsNumber,
+                context.sized.emptySizedHeightBoxLow3x,
                 locationImage,
                 context.sized.emptySizedHeightBoxLow3x,
                 location,
@@ -50,6 +59,12 @@ class DetailDialog {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(),
+                      onPressed: () {},
+                      child: Text('Guncelle'),
+                    ),
+                    context.sized.emptySizedWidthBoxLow3x,
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.cyan.shade200,
@@ -62,7 +77,7 @@ class DetailDialog {
                         ),
                       ),
                     ),
-                    context.sized.emptySizedWidthBoxLow3x,
+                    context.sized.emptySizedWidthBoxLow,
                     if (negativeButton != null)
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(

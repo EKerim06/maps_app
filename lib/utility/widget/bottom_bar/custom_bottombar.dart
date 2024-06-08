@@ -78,7 +78,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
                   label: LocaleKeys.general_Appbar_maps.tr(),
                 ),
                 BottomNavigationBarItem(
-                  icon: const Icon(Icons.flag),
+                  icon: const Icon(Icons.save_as_rounded),
                   label: LocaleKeys.general_Appbar_saveAs.tr(),
                 ),
                 BottomNavigationBarItem(

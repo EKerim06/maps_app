@@ -1,12 +1,12 @@
 {
     "onboardPages": {
         "WelcomeToAppPage": {
-            "welcomeMessage": "Welcome To App",
+            "welcomeMessage": "Welcome to the App",
             "welcomeToAppPageButton": "Next"
         },
         "AppExplainToPage": {},
         "LocationExplainToPage": {
-            "locationMomenteryMessage": "To fully utilize the functionality of our app, we need to use your location. Your location information will be used to provide you with better service, help you find nearby amenities, and enhance your overall experience. (This is a mandatory permission, if you do not grant it, the app will close!)",
+            "locationMomenteryMessage": "To fully benefit from our app's functionality, we need to use your location. Your location information will be used to provide better services, help you find nearby facilities, and enhance your experience. (This is a mandatory permission, if you do not grant it, the app will close!)",
             "locationMomenteryMessageButton": "Next"
         }
     },
@@ -18,23 +18,31 @@
             "textFormFieldLabelText": "Location name",
             "dropDownMenuHintText": "You will receive a notification when you enter the selected distance!",
             "bottomSheetButtonCancelButton": "Cancel",
-            "bottomSheetButtonConfirmButton": "Confirm"
+            "bottomSheetButtonConfirmButton": "Confirm",
+            "bottomSheetDistanceMeter": "Meter",
+            "bottomSheetAgainHelperText":"Choose how many repetitions there will be.",
+            "bottomSheetDistanceHelperText": "Select the distance at which you want to receive an alert.",
+            "bottomSheetAgainText": "Times",
+            "bottomSheetAgainInfinity":"Infinity",
+            "bottomSheetAgainHelperTextOther": "Custom",
+            "bottomSheetFrequencyHelperText": "The reference day is today. For example, if 'Once a month' is selected, it will become active 30 days later to notify you, and will remain inactive at other times even if you enter the area. The left side indicates the days and the right side indicates how many times it will run. E.g., 30/1 means it will run once every 30 days.",
+            "bottomSheetFrequencyOtherSelectedTextFormFieldHint": "Enter a value for how many days"
         }
     },
     "SavePage": {
         "Appbar": {
-            "titleText": "Saved Data",
+            "titleText": "Saved data",
             "actions": {
                 "deleteAllDataAlertDialog": {
                     "title": "All data will be deleted!",
-                    "content": "This action cannot be undone and will delete all saved locations. Are you sure?",
+                    "content": "This action is irreversible and deletes all saved locations. Are you sure?",
                     "positiveButton": "Delete",
                     "negativeButton": "Cancel"
                 }
             }
         },
         "Body": {
-            "listEmpty": "No data has been saved!",
+            "listEmpty": "No saved data!",
             "savedDataLocationName": "Location"
         }
     },
@@ -45,7 +53,7 @@
     },
     "general": {
         "Appbar": {
-            "maps": "Maps",
+            "maps": "Map",
             "saveAs": "Saved",
             "settings": "Settings"
         },
@@ -54,8 +62,8 @@
         },
         "updatingArea": {
             "HomePage": {
-                "mapsOnTapUpdate": "Detailed information about the selected location will be added soon.",
-                "mapsOnTapUserInformation": "Currently, the value will be deleted after receiving a notification once."
+                "mapsOnTapUpdate": "Detailed information about the selected place will be added soon.",
+                "mapsOnTapUserInformation": "For now, the value will be deleted after receiving a notification once."
             }
         },
         "alertDialogs": {
@@ -67,11 +75,15 @@
             },
             "DetailDialog": {
                 "title": "Detail",
-                "positiveButton": "Close",
                 "locationName": "Location name",
+                "frequencyNumber":"Frequency Number",
+                "againNumber":"Again Number",
+                "remainingAgainNumber":"Remaining Again",
+                "remainingAgainNumberDescriptions":"Stayed again",
                 "LokasyonImage": "Location image",
                 "location": "Location",
-                "negativeButton": "Delete"
+                "negativeButton": "Delete",
+                "positiveButton": "Close"
             }
         }
     }

@@ -42,12 +42,13 @@ class MapSampleState extends State<HomePageView> {
   @override
   void initState() {
     super.initState();
+
     cmp = const CameraPosition(
       target: LatLng(37.566463930332816, 36.937840311064676),
       zoom: 12,
     );
     service = HiveService();
-    viewModel = HomeCubit(service);
+    viewModel = HomeCubit(service, context);
 
     viewModel.markersCreate();
 
@@ -110,4 +111,5 @@ class MapSampleState extends State<HomePageView> {
           Marker(markerId: const MarkerId('a'), position: latLng);
     });
   }
+  
 }

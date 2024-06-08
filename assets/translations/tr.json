@@ -18,18 +18,26 @@
             "textFormFieldLabelText": "Lokasyon adı",
             "dropDownMenuHintText": "Seçtiğiniz mesafe içine girdiğinizde bildirim alacaksınız!.",
             "bottomSheetButtonCancelButton": "İptal",
-            "bottomSheetButtonConfirmButton": "Onayla"
+            "bottomSheetButtonConfirmButton": "Onayla",
+            "bottomSheetDistanceMeter": "Metre",
+            "bottomSheetAgainHelperText":"Kaç tekrar olacağını seçin.",
+            "bottomSheetDistanceHelperText": "Ne Kadar mesafeden uyarı almak istediğinizi seçin.",
+            "bottomSheetAgainText": "Defa",
+            "bottomSheetAgainInfinity":"Sonsuz",
+            "bottomSheetAgainHelperTextOther": "Kişisel",
+            "bottomSheetFrequencyHelperText": "Referans günü bugündür. Örnek olarak Ayda 1 seçilirse 30 gün sonra sizi uyarmak için aktif olur diğer zamanlar pasiftir alana girseniz bile bildirim gönderilmez.Sol taraf günü sağ taraf ise kaç defa çalışacağını belirtir Örn : 30/1 30 günde 1 defa çalışacak demektir.",
+            "bottomSheetFrequencyOtherSelectedTextFormFieldHint": "Kaç gün olacak şekilde değer girin"
         }
     },
     "SavePage": {
         "Appbar": {
             "titleText": "Kayıtlı veriler",
-            "actions":{
-                "deleteAllDataAlertDialog":{
-                    "title":"Tüm veriler silinecektir!",
-                    "content":"Bu işlem geriye alınamaz ve kayıt edilen tüm lokasyonları siler. Emin misiniz",
-                    "positiveButton":"Sil",
-                    "negativeButton":"İptal"
+            "actions": {
+                "deleteAllDataAlertDialog": {
+                    "title": "Tüm veriler silinecektir!",
+                    "content": "Bu işlem geriye alınamaz ve kayıt edilen tüm lokasyonları siler. Emin misiniz",
+                    "positiveButton": "Sil",
+                    "negativeButton": "İptal"
                 }
             }
         },
@@ -67,11 +75,15 @@
             },
             "DetailDialog": {
                 "title": "Detay",
-                "positiveButton": "Kapat",
                 "locationName": "Lokasyon adı",
+                "frequencyNumber":"Sıklık Sayısı",
+                "againNumber":"Tekrar Sayısı",
+                "remainingAgainNumber":"Kalan Tekrar",
+                "remainingAgainNumberDescriptions":"Tekrar kaldı",
                 "LokasyonImage": "Lokasyon resmi",
                 "location": "Konum",
-                "negativeButton": "Sil"
+                "negativeButton": "Sil",
+                "positiveButton": "Kapat"
             }
         }
     }

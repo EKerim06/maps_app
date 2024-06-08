@@ -22,13 +22,15 @@ class SaveLocationAdapter extends TypeAdapter<SaveLocation> {
       longitude: fields[2] as double,
       imagePath: fields[3] as String,
       distance: fields[4] as int,
+      againsNumber: fields[5] as int,
+      frequencyNumber: fields[6] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, SaveLocation obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
@@ -38,7 +40,11 @@ class SaveLocationAdapter extends TypeAdapter<SaveLocation> {
       ..writeByte(3)
       ..write(obj.imagePath)
       ..writeByte(4)
-      ..write(obj.distance);
+      ..write(obj.distance)
+      ..writeByte(5)
+      ..write(obj.againsNumber)
+      ..writeByte(6)
+      ..write(obj.frequencyNumber);
   }
 
   @override

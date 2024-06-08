@@ -12,6 +12,8 @@ class SaveLocation extends HiveObject {
     required this.longitude,
     required this.imagePath,
     required this.distance,
+    required this.againsNumber,
+    required this.frequencyNumber,
   });
 
   @HiveField(0)
@@ -28,4 +30,11 @@ class SaveLocation extends HiveObject {
 
   @HiveField(4)
   int distance;
+
+  @HiveField(5)
+  int againsNumber;
+
+  @HiveField(6)
+  int frequencyNumber;
+
 }

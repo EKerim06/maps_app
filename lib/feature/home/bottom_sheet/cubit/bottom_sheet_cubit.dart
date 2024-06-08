@@ -8,7 +8,7 @@ part 'bottom_sheet_state.dart';
 ///bottom sheet state managment
 class BottomSheetCubit extends Cubit<BottomSheetState> {
   ///constr
-  BottomSheetCubit() : super(const BottomSheetState());
+  BottomSheetCubit() : super(BottomSheetState());
 
   late final HiveManager _manager;
 
@@ -16,5 +16,9 @@ class BottomSheetCubit extends Cubit<BottomSheetState> {
   Future<void> saveLocation({required SaveLocation location}) async {
     await _manager.saveLocation(location: location);
   }
-  
+
+  void isOtherSelected({bool? isSelect}) {
+    emit(state.copyWith(isOtherSelected: isSelect));
+  }
+
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -79,7 +81,8 @@ class _SavePageState extends State<SavePage> {
                   )
                 : state.fetchingData?.isEmpty ?? true
                     ? Center(
-                        child: const Text(LocaleKeys.SavePage_Body_listEmpty).tr(),
+                        child:
+                            const Text(LocaleKeys.SavePage_Body_listEmpty).tr(),
                       )
                     : ListView.builder(
                         itemCount: state.fetchingData?.length,
@@ -107,6 +110,24 @@ class _SavePageState extends State<SavePage> {
                                         .general_alertDialogs_DetailDialog_locationName,
                                     descriptions:
                                         state.fetchingData![index]!.name,
+                                  ),
+                                  againsNumber: InfoText(
+                                    title: LocaleKeys
+                                        .general_alertDialogs_DetailDialog_againNumber,
+                                    descriptions:
+                                        '${state.fetchingData![index]!.againsNumber} ${LocaleKeys.general_alertDialogs_DetailDialog_againNumber.tr()}',
+                                  ),
+                                  remainingAgainsNumber: InfoText(
+                                    title: LocaleKeys
+                                        .general_alertDialogs_DetailDialog_remainingAgainNumber,
+                                    descriptions:
+                                        '${state.fetchingData![index]!.againsNumber} ${LocaleKeys.general_alertDialogs_DetailDialog_remainingAgainNumberDescriptions.tr()}',
+                                  ),
+                                  frequency: InfoText(
+                                    title: LocaleKeys
+                                        .general_alertDialogs_DetailDialog_frequencyNumber,
+                                    descriptions:
+                                        '${state.fetchingData![index]!.frequencyNumber} / 1',
                                   ),
                                   locationImage: InfoText(
                                     title: LocaleKeys

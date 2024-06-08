@@ -21,8 +21,7 @@ class InfoText extends StatelessWidget {
         Expanded(
           child: Text(
             title.tr(),
-            overflow: TextOverflow
-                .ellipsis, // Kırpma işareti ekleyerek metnin taşmasını engelle
+            overflow: TextOverflow.ellipsis,
           ),
         ),
         const Text(' : '),
@@ -30,8 +29,7 @@ class InfoText extends StatelessWidget {
           Expanded(
             child: Text(
               descriptions!.tr(),
-              overflow: TextOverflow
-                  .ellipsis, // Kırpma işareti ekleyerek metnin taşmasını engelle
+              overflow: TextOverflow.ellipsis,
             ),
           )
         else

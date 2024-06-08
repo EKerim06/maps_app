@@ -1,16 +1,23 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_maps_note/core/cache/hive/hive_local_storage_manager.dart';
 import 'package:flutter_maps_note/core/cache/hive/hive_local_storage_service.dart';
 import 'package:flutter_maps_note/core/localization/locale_keys.g.dart';
 import 'package:flutter_maps_note/core/models/local_storage_model/save_location.dart';
+import 'package:flutter_maps_note/feature/home/bottom_sheet/cubit/bottom_sheet_cubit.dart';
+import 'package:flutter_maps_note/feature/home/bottom_sheet/custom_bottom_sheet_mixin.dart';
 import 'package:flutter_maps_note/utility/func/general/general_func.dart';
 import 'package:flutter_maps_note/utility/func/validate/validate_fun.dart';
 import 'package:flutter_maps_note/utility/widget/buttons/bottom_sheet_button/custom_bottom_sheet_button.dart';
+import 'package:flutter_maps_note/utility/widget/custom_text_form_field/custom_text_form_field.dart';
+import 'package:flutter_maps_note/utility/widget/dropdown_button_formfield/custom_dropdown_button_form_field.dart';
 import 'package:flutter_maps_note/utility/widget/texts/center_text.dart';
 import 'package:gen/gen/colors.gen.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:kartal/kartal.dart';
+
+late BottomSheetCubit viewModel;
 
 ///Home page custom bottom sheet
 class CustomDraggableScrollableSheet extends StatefulWidget {
@@ -33,30 +40,35 @@ class CustomDraggableScrollableSheet extends StatefulWidget {
 }
 
 class _CustomDraggableScrollableSheetState
-    extends State<CustomDraggableScrollableSheet> {
+    extends State<CustomDraggableScrollableSheet> with BottomSheetMixin {
   @override
   Widget build(BuildContext context) {
-    return DraggableScrollableSheet(
-      initialChildSize: context.sized.dynamicHeight(0.0001),
-      minChildSize: context.sized.dynamicHeight(0.0001),
-      maxChildSize: context.sized.dynamicHeight(0.0008),
-      builder: (
-        BuildContext context,
-        ScrollController scrollController,
-      ) {
-        return Form(
-          key: widget.formKey,
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          child: Padding(
-            padding: context.padding.onlyTopLow,
-            child: _DraggableContainer(
-              formKey: widget.formKey,
-              scrollController: scrollController,
-              location: widget.location,
+    viewModel = BottomSheetCubit();
+
+    return BlocProvider(
+      create: (context) => viewModel,
+      child: DraggableScrollableSheet(
+        initialChildSize: context.sized.dynamicHeight(0.0001),
+        minChildSize: context.sized.dynamicHeight(0.0001),
+        maxChildSize: context.sized.dynamicHeight(0.0008),
+        builder: (
+          BuildContext context,
+          ScrollController scrollController,
+        ) {
+          return Form(
+            key: widget.formKey,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            child: Padding(
+              padding: context.padding.onlyTopLow,
+              child: _DraggableContainer(
+                formKey: widget.formKey,
+                scrollController: scrollController,
+                location: widget.location,
+              ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
@@ -120,17 +132,24 @@ class _DraggableListViewState extends State<_DraggableListView> {
 
   late final HiveManager _manager;
 
-  late final TextEditingController controller;
-  late final ValueNotifier<int> selectedDistance;
+  late final TextEditingController nameController;
+
+  late final TextEditingController frequencyController;
+
+  int selectedDistance = 150;
+
+  int selectedAgainNumber = 3;
+
+  int selectedFrequency = 30;
 
   // late final PageController pageController;
 
   @override
   void initState() {
     _manager = HiveService();
-    controller = TextEditingController();
-    selectedDistance = ValueNotifier(1000);
-    // pageController = PageController();
+    nameController = TextEditingController();
+    frequencyController = TextEditingController();
+
     super.initState();
   }
 
@@ -147,153 +166,184 @@ class _DraggableListViewState extends State<_DraggableListView> {
 
     selectedItems = ValueNotifier<int>(-1); // Başlangıçta seçili bir eleman yok
 
-    return ListView(
-      controller: widget.scrollController,
-      children: [
-        Container(
-          height: context.sized.height * .007,
-          margin: EdgeInsets.only(
-            left: context.sized.width * .3,
-            right: context.sized.width * .3,
-            top: context.sized.height * .02,
-          ),
-          decoration: BoxDecoration(
-            color: ColorName.main,
-            borderRadius: context.border.highBorderRadius,
-          ),
-        ),
-        const ListTile(
-          title: CenterText(
-            // message: LocaleKeys.LocaleKeys.general_updatingArea_HomePage_mapsOnTapUpdate,
-            message: LocaleKeys.general_updatingArea_HomePage_mapsOnTapUpdate,
-          ),
-        ),
-        const ListTile(
-          title: CenterText(
-            message: LocaleKeys
-                .general_updatingArea_HomePage_mapsOnTapUserInformation,
-          ),
-        ),
-        TextFormField(
-          controller: controller,
-          decoration: InputDecoration(
-            // helperText: 'asdas',
-            label: const Text(
-              LocaleKeys.HomePage_BottomSheet_textFormFieldHint,
-            ).tr(),
-            border: const OutlineInputBorder(),
-          ),
-          validator: Validation.locationNameControl,
-          onFieldSubmitted: (newValue) {
-            // ! Nothing hear
-          },
-        ),
-        GridView.builder(
-          itemCount: imageList.length,
-          padding: EdgeInsets.only(
-            // left: context.padding.onlyLeftMedium.left,
-            right: context.padding.onlyRightMedium.right,
-            top: context.padding.onlyBottomMedium.bottom,
-          ),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            childAspectRatio: 1.5,
-            crossAxisSpacing: 2,
-            mainAxisSpacing: 2,
-          ),
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            return ValueListenableBuilder<int>(
-              builder: (context, value, child) {
-                return GestureDetector(
-                  onTap: () {
-                    // Seçili elemanın index'ini güncelle
-                    selectedItems.value = index;
-                    print('Tıklanan elemanın indexi: $index');
-                  },
-                  child: Stack(
-                    children: [
-                      Center(
-                        child: imageList[index],
-                      ),
-                      if (selectedItems.value == index)
-                        Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: Icon(
-                            Icons.check_circle,
-                            color: Colors.green,
-                            size: context.sized.width * .06,
+    return BlocConsumer<BottomSheetCubit, BottomSheetState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return ListView(
+          controller: widget.scrollController,
+          children: [
+            Container(
+              height: context.sized.height * .007,
+              margin: EdgeInsets.only(
+                left: context.sized.width * .3,
+                right: context.sized.width * .3,
+                top: context.sized.height * .02,
+              ),
+              decoration: BoxDecoration(
+                color: ColorName.main,
+                borderRadius: context.border.highBorderRadius,
+              ),
+            ),
+            const ListTile(
+              title: CenterText(
+                // message: LocaleKeys.LocaleKeys.general_updatingArea_HomePage_mapsOnTapUpdate,
+                message:
+                    LocaleKeys.general_updatingArea_HomePage_mapsOnTapUpdate,
+              ),
+            ),
+            const ListTile(
+              title: CenterText(
+                message: LocaleKeys
+                    .general_updatingArea_HomePage_mapsOnTapUserInformation,
+              ),
+            ),
+            CustomTextFormField(
+              controller: nameController,
+              onFieldSubmitted: (newValue) {},
+              validator: Validation.locationNameControl,
+              labelText: LocaleKeys.HomePage_BottomSheet_textFormFieldHint,
+            ),
+            GridView.builder(
+              itemCount: imageList.length,
+              padding: EdgeInsets.only(
+                // left: context.padding.onlyLeftMedium.left,
+                right: context.padding.onlyRightMedium.right,
+                top: context.padding.onlyBottomMedium.bottom,
+              ),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                childAspectRatio: 1.5,
+                crossAxisSpacing: 2,
+                mainAxisSpacing: 2,
+              ),
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return ValueListenableBuilder<int>(
+                  builder: (context, value, child) {
+                    return GestureDetector(
+                      onTap: () => selectedItems.value = index,
+                      child: Stack(
+                        children: [
+                          Center(
+                            child: imageList[index],
                           ),
-                        ),
-                    ],
-                  ),
+                          if (selectedItems.value == index)
+                            Positioned(
+                              bottom: 0,
+                              right: 0,
+                              child: Icon(
+                                Icons.check_circle,
+                                color: Colors.green,
+                                size: context.sized.width * .06,
+                              ),
+                            ),
+                        ],
+                      ),
+                    );
+                  },
+                  valueListenable: selectedItems,
                 );
               },
-              valueListenable: selectedItems,
-            );
-          },
-        ),
-        context.sized.emptySizedHeightBoxNormal,
-        ValueListenableBuilder(
-          valueListenable: selectedDistance,
-          builder: (context, value, child) {
-            return DropdownButtonFormField<int>(
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                // hintText: 'Olusacak cemberin capi',
-                helper:
-                    Text('Ne kadar mesafeden uyari almak istediginizi secin.'),
-                hintStyle: TextStyle(color: Colors.black),
-              ),
-              items: AppGeneralFunction.bottomSheetDropDownItems(),
-              value: selectedDistance.value,
+            ),
+            context.sized.emptySizedHeightBoxNormal,
+            // ! Selected distance meter
+            CustomDropdownFormField(
+              items: AppGeneralFunction.bottomSheetDropDownDistanceMeter(),
               onChanged: (value) =>
-                  value != null ? selectedDistance.value = value : null,
-              borderRadius: BorderRadius.zero,
-            );
-          },
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            BottomSheetButton(
-              buttonColor: ColorName.negativeColor,
-              child: const Text(
-                LocaleKeys.HomePage_BottomSheet_bottomSheetButtonCancelButton,
-              ).tr(),
-              onPressed: () {},
+                  value != null ? selectedDistance = value : null,
+              helperText:
+                  LocaleKeys.HomePage_BottomSheet_bottomSheetDistanceHelperText,
+              initialValue: selectedDistance,
             ),
-            SizedBox(
-              width: context.sized.dynamicWidth(.09),
+            context.sized.emptySizedHeightBoxNormal,
+            // ! Selected number of again
+            CustomDropdownFormField(
+              items: AppGeneralFunction.bottomSheetDropDownAgainItems(),
+              onChanged: (value) =>
+                  value != null ? selectedAgainNumber = value : null,
+              helperText:
+                  LocaleKeys.HomePage_BottomSheet_bottomSheetAgainHelperText,
+              initialValue: selectedAgainNumber,
             ),
-            BottomSheetButton(
-              onPressed: () {
-                if (widget.formKey.currentState?.validate() ?? false) {
-                  selectedImagePath = imagePathList[selectedItems.value];
-                  final saveToLocation = SaveLocation(
-                    name: controller.text,
-                    latitude: widget.location.latitude,
-                    longitude: widget.location.longitude,
-                    imagePath: selectedImagePath,
-                    distance: selectedDistance.value,
-                  );
+            context.sized.emptySizedHeightBoxNormal,
+            CustomDropdownFormField(
+              items: AppGeneralFunction.bottomSheetDropDownFrequency(),
+              onChanged: (value) {
+                if (value != null) {
+                  selectedFrequency = value;
 
-                  saveLocation(location: saveToLocation);
-
-                  // pageController.jumpToPage(1);
+                  value == 0
+                      ? viewModel.isOtherSelected(isSelect: true)
+                      : viewModel.isOtherSelected(isSelect: false);
                 }
               },
-              buttonColor: ColorName.main,
-              child: const Text(
-                LocaleKeys.HomePage_BottomSheet_bottomSheetButtonConfirmButton,
-              ).tr(),
+              helperText: LocaleKeys
+                  .HomePage_BottomSheet_bottomSheetFrequencyHelperText,
+              initialValue: selectedFrequency,
             ),
-            context.sized.emptySizedHeightBoxHigh,
+
+            context.sized.emptySizedHeightBoxNormal,
+
+            if (state.isOtherSelected ?? false)
+              CustomTextFormField(
+                controller: frequencyController,
+                keyboardType: TextInputType.number,
+                onFieldSubmitted: (newValue) {},
+                validator: Validation.frequencyValidator,
+                labelText: LocaleKeys
+                    .HomePage_BottomSheet_bottomSheetFrequencyOtherSelectedTextFormFieldHint,
+              )
+            else
+              const SizedBox(),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                BottomSheetButton(
+                  buttonColor: ColorName.negativeColor,
+                  child: const Text(
+                    LocaleKeys
+                        .HomePage_BottomSheet_bottomSheetButtonCancelButton,
+                  ).tr(),
+                  onPressed: () {},
+                ),
+                SizedBox(
+                  width: context.sized.dynamicWidth(.09),
+                ),
+                BottomSheetButton(
+                  onPressed: () {
+                    if (widget.formKey.currentState?.validate() ?? false) {
+                      selectedImagePath = imagePathList[selectedItems.value];
+                      final saveToLocation = SaveLocation(
+                        name: nameController.text,
+                        latitude: widget.location.latitude,
+                        longitude: widget.location.longitude,
+                        imagePath: selectedImagePath,
+                        distance: selectedDistance,
+                        againsNumber: selectedAgainNumber,
+                        frequencyNumber: selectedFrequency != 0
+                            ? selectedFrequency
+                            : frequencyController.text.isNotEmpty
+                                ? int.tryParse(frequencyController.text) ?? 0
+                                : 1,
+                      );
+                      saveLocation(location: saveToLocation);
+                      // pageController.jumpToPage(1);
+                    }
+                  },
+                  buttonColor: ColorName.main,
+                  child: const Text(
+                    LocaleKeys
+                        .HomePage_BottomSheet_bottomSheetButtonConfirmButton,
+                  ).tr(),
+                ),
+                context.sized.emptySizedHeightBoxHigh,
+              ],
+            ),
           ],
-        ),
-      ],
+        );
+      },
     );
   }
 }

@@ -2,12 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_maps_note/utility/widget/buttons/custom_general_button.dart';
 
 /// bottom sheet button design
-class BottomSheetButton extends CustomGeneralButton {
-  /// constructor
-
-  /// colors value
-  late final Color buttonColor;
-
+final class BottomSheetButton extends CustomGeneralButton {
   BottomSheetButton({
     required super.onPressed,
     required super.child,
@@ -18,4 +13,9 @@ class BottomSheetButton extends CustomGeneralButton {
             backgroundColor: buttonColor,
           ),
         );
+
+  /// constructor
+
+  /// colors value
+  late final Color buttonColor;
 }
