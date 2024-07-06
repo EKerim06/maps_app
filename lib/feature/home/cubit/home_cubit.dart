@@ -9,7 +9,7 @@ import 'package:flutter/services.dart';
 
 import 'package:flutter_maps_note/core/cache/hive/hive_local_storage_manager.dart';
 import 'package:flutter_maps_note/core/localization/locale_keys.g.dart';
-import 'package:flutter_maps_note/core/models/local_storage_model/save_location.dart';
+import 'package:flutter_maps_note/models/local_storage_model/save_location.dart';
 import 'package:flutter_maps_note/utility/func/general/general_func.dart';
 import 'package:flutter_maps_note/utility/widget/alert_dialog/detail_dialog.dart';
 import 'package:flutter_maps_note/utility/widget/alert_dialog/positive_negative_alert_dialog.dart';
@@ -166,4 +166,10 @@ class HomeCubit extends Cubit<HomeState> {
     final autoDosemeMarkerIcon = await _getBytesFromAssets(imagePath, 100);
     return BitmapDescriptor.fromBytes(autoDosemeMarkerIcon);
   }
+
+  // Future functionName(List args) {
+  // return Null;
+  // }
+
+
 }

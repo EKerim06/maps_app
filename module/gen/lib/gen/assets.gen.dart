@@ -63,8 +63,15 @@ class $AssetsIconsGen {
       const AssetGenImage('assets/icons/not_use_image.jpg');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [icBaby, icCarWash, icFood, icPets, icPharmacy, icShopBag, notUseImage];
+  List<AssetGenImage> get values => [
+        icBaby,
+        icCarWash,
+        icFood,
+        icPets,
+        icPharmacy,
+        icShopBag,
+        notUseImage,
+      ];
 
   AssetGenImage getIconsWithPath({required String path}) => AssetGenImage(path);
 }

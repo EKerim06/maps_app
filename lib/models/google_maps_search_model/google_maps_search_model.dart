@@ -1,28 +1,27 @@
-// ignore_for_file: must_be_immutable, public_member_api_docs, sort_constructors_first
-
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:vexana/vexana.dart';
 
 part 'google_maps_search_model.g.dart';
 
 @JsonSerializable()
-class GoogleMapsSearchModel extends INetworkModel<GoogleMapsSearchModel>
+@immutable
+final class GoogleMapsSearchModel extends INetworkModel<GoogleMapsSearchModel>
     with EquatableMixin {
-  List<Candidates>? candidates;
-  String? status;
-
   GoogleMapsSearchModel({
     this.candidates,
     this.status,
   });
 
+  factory GoogleMapsSearchModel.fromJson(Map<String, dynamic> json) =>
+      _$GoogleMapsSearchModelFromJson(json);
+  final List<Candidates>? candidates;
+  final String? status;
+
   @override
   GoogleMapsSearchModel fromJson(Map<String, dynamic> json) =>
       GoogleMapsSearchModel.fromJson(json);
-
-  factory GoogleMapsSearchModel.fromJson(Map<String, dynamic> json) =>
-      _$GoogleMapsSearchModelFromJson(json);
 
   @override
   Map<String, dynamic>? toJson() => _$GoogleMapsSearchModelToJson(this);
@@ -43,37 +42,41 @@ class GoogleMapsSearchModel extends INetworkModel<GoogleMapsSearchModel>
 
 @JsonSerializable()
 class Candidates extends INetworkModel<Candidates> with EquatableMixin {
-  String? formattedAddress;
-  Geometry? geometry;
-  String? name;
-  List<Photos>? photos;
-  double? rating;
-
   Candidates({
     this.formattedAddress,
     this.geometry,
     this.name,
     this.photos,
+    this.placeId,
     this.rating,
   });
 
-  @override
-  Candidates fromJson(Map<String, dynamic> json) => Candidates.fromJson(json);
-
   factory Candidates.fromJson(Map<String, dynamic> json) =>
       _$CandidatesFromJson(json);
+
+  final String? formattedAddress;
+  final Geometry? geometry;
+  final String? name;
+  final List<Photos>? photos;
+  final String? placeId;
+  final double? rating;
+
+  @override
+  Candidates fromJson(Map<String, dynamic> json) => Candidates.fromJson(json);
 
   @override
   Map<String, dynamic>? toJson() => _$CandidatesToJson(this);
 
   @override
-  List<Object?> get props => [formattedAddress, geometry, name, photos, rating];
+  List<Object?> get props =>
+      [formattedAddress, geometry, name, photos, placeId, rating];
 
   Candidates copyWith({
     String? formattedAddress,
     Geometry? geometry,
     String? name,
     List<Photos>? photos,
+    String? placeId,
     double? rating,
   }) {
     return Candidates(
@@ -81,6 +84,7 @@ class Candidates extends INetworkModel<Candidates> with EquatableMixin {
       geometry: geometry ?? this.geometry,
       name: name ?? this.name,
       photos: photos ?? this.photos,
+      placeId: placeId ?? this.placeId,
       rating: rating ?? this.rating,
     );
   }
@@ -88,19 +92,19 @@ class Candidates extends INetworkModel<Candidates> with EquatableMixin {
 
 @JsonSerializable()
 class Geometry extends INetworkModel<Geometry> with EquatableMixin {
-  Location? location;
-  Viewport? viewport;
-
   Geometry({
     this.location,
     this.viewport,
   });
 
-  @override
-  Geometry fromJson(Map<String, dynamic> json) => Geometry.fromJson(json);
-
   factory Geometry.fromJson(Map<String, dynamic> json) =>
       _$GeometryFromJson(json);
+
+  final Location? location;
+  final Viewport? viewport;
+
+  @override
+  Geometry fromJson(Map<String, dynamic> json) => Geometry.fromJson(json);
 
   @override
   Map<String, dynamic>? toJson() => _$GeometryToJson(this);
@@ -121,19 +125,17 @@ class Geometry extends INetworkModel<Geometry> with EquatableMixin {
 
 @JsonSerializable()
 class Location extends INetworkModel<Location> with EquatableMixin {
-  double? lat;
-  double? lng;
-
   Location({
     this.lat,
     this.lng,
   });
+  factory Location.fromJson(Map<String, dynamic> json) =>
+      _$LocationFromJson(json);
+  final double? lat;
+  final double? lng;
 
   @override
   Location fromJson(Map<String, dynamic> json) => Location.fromJson(json);
-
-  factory Location.fromJson(Map<String, dynamic> json) =>
-      _$LocationFromJson(json);
 
   @override
   Map<String, dynamic>? toJson() => _$LocationToJson(this);
@@ -154,19 +156,18 @@ class Location extends INetworkModel<Location> with EquatableMixin {
 
 @JsonSerializable()
 class Viewport extends INetworkModel<Viewport> with EquatableMixin {
-  Northeast? northeast;
-  Southwest? southwest;
-
   Viewport({
     this.northeast,
     this.southwest,
   });
 
-  @override
-  Viewport fromJson(Map<String, dynamic> json) => Viewport.fromJson(json);
-
   factory Viewport.fromJson(Map<String, dynamic> json) =>
       _$ViewportFromJson(json);
+  final Southwest? southwest;
+  final Northeast? northeast;
+
+  @override
+  Viewport fromJson(Map<String, dynamic> json) => Viewport.fromJson(json);
 
   @override
   Map<String, dynamic>? toJson() => _$ViewportToJson(this);
@@ -187,19 +188,18 @@ class Viewport extends INetworkModel<Viewport> with EquatableMixin {
 
 @JsonSerializable()
 class Northeast extends INetworkModel<Northeast> with EquatableMixin {
-  double? lat;
-  double? lng;
-
   Northeast({
     this.lat,
     this.lng,
   });
 
-  @override
-  Northeast fromJson(Map<String, dynamic> json) => Northeast.fromJson(json);
-
   factory Northeast.fromJson(Map<String, dynamic> json) =>
       _$NortheastFromJson(json);
+  final double? lat;
+  final double? lng;
+
+  @override
+  Northeast fromJson(Map<String, dynamic> json) => Northeast.fromJson(json);
 
   @override
   Map<String, dynamic>? toJson() => _$NortheastToJson(this);
@@ -220,19 +220,18 @@ class Northeast extends INetworkModel<Northeast> with EquatableMixin {
 
 @JsonSerializable()
 class Southwest extends INetworkModel<Southwest> with EquatableMixin {
-  double? lat;
-  double? lng;
-
   Southwest({
     this.lat,
     this.lng,
   });
 
-  @override
-  Southwest fromJson(Map<String, dynamic> json) => Southwest.fromJson(json);
-
   factory Southwest.fromJson(Map<String, dynamic> json) =>
       _$SouthwestFromJson(json);
+  final double? lat;
+  final double? lng;
+
+  @override
+  Southwest fromJson(Map<String, dynamic> json) => Southwest.fromJson(json);
 
   @override
   Map<String, dynamic>? toJson() => _$SouthwestToJson(this);
@@ -253,11 +252,6 @@ class Southwest extends INetworkModel<Southwest> with EquatableMixin {
 
 @JsonSerializable()
 class Photos extends INetworkModel<Photos> with EquatableMixin {
-  int? height;
-  List<String>? htmlAttributions;
-  String? photoReference;
-  int? width;
-
   Photos({
     this.height,
     this.htmlAttributions,
@@ -265,10 +259,14 @@ class Photos extends INetworkModel<Photos> with EquatableMixin {
     this.width,
   });
 
+  factory Photos.fromJson(Map<String, dynamic> json) => _$PhotosFromJson(json);
+  final int? height;
+  final List<String>? htmlAttributions;
+  final String? photoReference;
+  final int? width;
+
   @override
   Photos fromJson(Map<String, dynamic> json) => Photos.fromJson(json);
-
-  factory Photos.fromJson(Map<String, dynamic> json) => _$PhotosFromJson(json);
 
   @override
   Map<String, dynamic>? toJson() => _$PhotosToJson(this);

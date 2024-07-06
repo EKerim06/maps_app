@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_maps_note/core/cache/hive/hive_local_storage_manager.dart';
 import 'package:flutter_maps_note/core/cache/hive/hive_local_storage_service.dart';
 import 'package:flutter_maps_note/core/localization/locale_keys.g.dart';
-import 'package:flutter_maps_note/core/models/local_storage_model/save_location.dart';
+import 'package:flutter_maps_note/models/local_storage_model/save_location.dart';
 import 'package:flutter_maps_note/feature/home/bottom_sheet/cubit/bottom_sheet_cubit.dart';
 import 'package:flutter_maps_note/feature/home/bottom_sheet/custom_bottom_sheet_mixin.dart';
 import 'package:flutter_maps_note/utility/func/general/general_func.dart';

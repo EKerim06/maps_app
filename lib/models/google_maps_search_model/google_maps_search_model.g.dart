@@ -23,7 +23,7 @@ Map<String, dynamic> _$GoogleMapsSearchModelToJson(
     };
 
 Candidates _$CandidatesFromJson(Map<String, dynamic> json) => Candidates(
-      formattedAddress: json['formattedAddress'] as String?,
+      formattedAddress: json['formatted_address'] as String?,
       geometry: json['geometry'] == null
           ? null
           : Geometry.fromJson(json['geometry'] as Map<String, dynamic>),
@@ -36,7 +36,7 @@ Candidates _$CandidatesFromJson(Map<String, dynamic> json) => Candidates(
 
 Map<String, dynamic> _$CandidatesToJson(Candidates instance) =>
     <String, dynamic>{
-      'formattedAddress': instance.formattedAddress,
+      'formatted_address': instance.formattedAddress,
       'geometry': instance.geometry,
       'name': instance.name,
       'photos': instance.photos,
@@ -106,13 +106,13 @@ Photos _$PhotosFromJson(Map<String, dynamic> json) => Photos(
       htmlAttributions: (json['htmlAttributions'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      photoReference: json['photoReference'] as String?,
+      photoReference: json['photo_reference'] as String?,
       width: json['width'] as int?,
     );
 
 Map<String, dynamic> _$PhotosToJson(Photos instance) => <String, dynamic>{
       'height': instance.height,
       'htmlAttributions': instance.htmlAttributions,
-      'photoReference': instance.photoReference,
+      'photo_reference': instance.photoReference,
       'width': instance.width,
     };

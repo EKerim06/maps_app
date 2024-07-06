@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_maps_note/core/models/local_storage_model/save_location.dart';
+import 'package:flutter_maps_note/models/local_storage_model/save_location.dart';
 import 'package:flutter_maps_note/utility/widget/base_widget/base_widget.dart';
 
 class DetailPage extends StatefulWidget {

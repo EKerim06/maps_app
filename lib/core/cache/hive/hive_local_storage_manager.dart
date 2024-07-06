@@ -1,4 +1,4 @@
-import 'package:flutter_maps_note/core/models/local_storage_model/save_location.dart';
+import 'package:flutter_maps_note/models/local_storage_model/save_location.dart';
 
 /// HIve Service Manager
 abstract class HiveManager {
