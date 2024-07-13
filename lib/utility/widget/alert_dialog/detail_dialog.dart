@@ -62,7 +62,7 @@ class DetailDialog {
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(),
                       onPressed: () {},
-                      child: Text('Guncelle'),
+                      child: const Text('Guncelle'),
                     ),
                     context.sized.emptySizedWidthBoxLow3x,
                     ElevatedButton(

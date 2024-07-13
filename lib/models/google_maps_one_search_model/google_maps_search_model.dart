@@ -7,33 +7,33 @@ part 'google_maps_search_model.g.dart';
 
 @JsonSerializable()
 @immutable
-final class GoogleMapsSearchModel extends INetworkModel<GoogleMapsSearchModel>
-    with EquatableMixin {
-  GoogleMapsSearchModel({
+final class GoogleMapsOneSearchModel
+    extends INetworkModel<GoogleMapsOneSearchModel> with EquatableMixin {
+  GoogleMapsOneSearchModel({
     this.candidates,
     this.status,
   });
 
-  factory GoogleMapsSearchModel.fromJson(Map<String, dynamic> json) =>
-      _$GoogleMapsSearchModelFromJson(json);
+  factory GoogleMapsOneSearchModel.fromJson(Map<String, dynamic> json) =>
+      _$GoogleMapsOneSearchModelFromJson(json);
   final List<Candidates>? candidates;
   final String? status;
 
   @override
-  GoogleMapsSearchModel fromJson(Map<String, dynamic> json) =>
-      GoogleMapsSearchModel.fromJson(json);
+  GoogleMapsOneSearchModel fromJson(Map<String, dynamic> json) =>
+      GoogleMapsOneSearchModel.fromJson(json);
 
   @override
-  Map<String, dynamic>? toJson() => _$GoogleMapsSearchModelToJson(this);
+  Map<String, dynamic>? toJson() => _$GoogleMapsOneSearchModelToJson(this);
 
   @override
   List<Object?> get props => [candidates, status];
 
-  GoogleMapsSearchModel copyWith({
+  GoogleMapsOneSearchModel copyWith({
     List<Candidates>? candidates,
     String? status,
   }) {
-    return GoogleMapsSearchModel(
+    return GoogleMapsOneSearchModel(
       candidates: candidates ?? this.candidates,
       status: status ?? this.status,
     );

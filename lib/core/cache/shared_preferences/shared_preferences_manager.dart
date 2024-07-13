@@ -13,4 +13,10 @@ abstract class SharedPreferencesManager {
 
   ///get onboarding page get data
   Future<bool> getOnboardingPageShowState();
+
+  ///set search endpoint
+  Future<void> setSearchEndPoint({required String endpoint});
+
+  ///get search endpoint
+  Future<String> getSearchEndPont();
 }

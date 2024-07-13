@@ -27,7 +27,6 @@ class PositiveAndNegativeAlertDialog {
                 onPressed: negativeButtonOnPressed,
                 child: Text(negativeButton!).tr(),
               ),
-
           ],
         );
       },

@@ -6,24 +6,24 @@ part of 'google_maps_search_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-GoogleMapsSearchModel _$GoogleMapsSearchModelFromJson(
+GoogleMapsOneSearchModel _$GoogleMapsOneSearchModelFromJson(
         Map<String, dynamic> json) =>
-    GoogleMapsSearchModel(
+    GoogleMapsOneSearchModel(
       candidates: (json['candidates'] as List<dynamic>?)
           ?.map((e) => Candidates.fromJson(e as Map<String, dynamic>))
           .toList(),
       status: json['status'] as String?,
     );
 
-Map<String, dynamic> _$GoogleMapsSearchModelToJson(
-        GoogleMapsSearchModel instance) =>
+Map<String, dynamic> _$GoogleMapsOneSearchModelToJson(
+        GoogleMapsOneSearchModel instance) =>
     <String, dynamic>{
       'candidates': instance.candidates,
       'status': instance.status,
     };
 
 Candidates _$CandidatesFromJson(Map<String, dynamic> json) => Candidates(
-      formattedAddress: json['formatted_address'] as String?,
+      formattedAddress: json['formattedAddress'] as String?,
       geometry: json['geometry'] == null
           ? null
           : Geometry.fromJson(json['geometry'] as Map<String, dynamic>),
@@ -31,15 +31,17 @@ Candidates _$CandidatesFromJson(Map<String, dynamic> json) => Candidates(
       photos: (json['photos'] as List<dynamic>?)
           ?.map((e) => Photos.fromJson(e as Map<String, dynamic>))
           .toList(),
+      placeId: json['placeId'] as String?,
       rating: (json['rating'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$CandidatesToJson(Candidates instance) =>
     <String, dynamic>{
-      'formatted_address': instance.formattedAddress,
+      'formattedAddress': instance.formattedAddress,
       'geometry': instance.geometry,
       'name': instance.name,
       'photos': instance.photos,
+      'placeId': instance.placeId,
       'rating': instance.rating,
     };
 
@@ -77,8 +79,8 @@ Viewport _$ViewportFromJson(Map<String, dynamic> json) => Viewport(
     );
 
 Map<String, dynamic> _$ViewportToJson(Viewport instance) => <String, dynamic>{
-      'northeast': instance.northeast,
       'southwest': instance.southwest,
+      'northeast': instance.northeast,
     };
 
 Northeast _$NortheastFromJson(Map<String, dynamic> json) => Northeast(
@@ -106,13 +108,13 @@ Photos _$PhotosFromJson(Map<String, dynamic> json) => Photos(
       htmlAttributions: (json['htmlAttributions'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      photoReference: json['photo_reference'] as String?,
+      photoReference: json['photoReference'] as String?,
       width: json['width'] as int?,
     );
 
 Map<String, dynamic> _$PhotosToJson(Photos instance) => <String, dynamic>{
       'height': instance.height,
       'htmlAttributions': instance.htmlAttributions,
-      'photo_reference': instance.photoReference,
+      'photoReference': instance.photoReference,
       'width': instance.width,
     };

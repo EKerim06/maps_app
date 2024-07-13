@@ -10,3 +10,22 @@ extension BaseUrlExtension on BaseUrl {
     }
   }
 }
+
+enum EndPointEnum {
+  OneSearch,
+  MultipleSearch,
+  ByLocationSearch,
+}
+
+extension EndPointExtension on EndPointEnum {
+  String get value {
+    switch (this) {
+      case EndPointEnum.OneSearch:
+        return 'findplacefromtext';
+      case EndPointEnum.MultipleSearch:
+        return 'textsearch';
+      case EndPointEnum.ByLocationSearch:
+        return 'nearbysearch';
+    }
+  }
+}

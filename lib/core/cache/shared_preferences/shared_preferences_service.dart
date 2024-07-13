@@ -20,5 +20,19 @@ class SharedPreferencesService extends SharedPreferencesManager {
       isValue,
     );
   }
-  
+
+  @override
+  Future<String> getSearchEndPont() async {
+    return manager
+            .getString(LocaleCacheKeys.SHARED_PREF_SEARCH_ENDPOINT.name) ??
+        '';
+  }
+
+  @override
+  Future<void> setSearchEndPoint({required String endpoint}) async {
+    await manager.setString(
+      LocaleCacheKeys.SHARED_PREF_SEARCH_ENDPOINT.name,
+      endpoint,
+    );
+  }
 }
